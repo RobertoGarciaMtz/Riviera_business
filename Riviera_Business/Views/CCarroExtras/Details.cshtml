@@ -1,0 +1,156 @@
+﻿@model Riviera_Business.Models.CCarroExtra
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<script>
+    $(document).ready(function () {
+        $("traerdatos").on("load",function () {
+             function recuperarVersion(this) {
+                var idSelected = select.value;
+                Console.log("Si entramos")
+                $.ajax({
+                    url: "/CCarroExtra/RecuperarVersion",
+                    method: "POST",
+                    data: { "id": idSelected },
+                    success: function (e) {
+                        let selectModelo = document.getElementById("VersionCarroo");
+                        console.log(e);
+                        let html = "";
+                        html += "<option value ='" + e.idVersionCarro + "' >" + e.versionCarro + "</option>";
+                        selectModelo.innerHTML = html;
+                    }
+                });
+            });
+    });
+</script>
+<h1>Details</h1>
+
+<div>
+    <h4>CCarroExtra</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Manuales)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Manuales == 1)
+            {
+                <label value="@Model.Manuales">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Manuales">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarnetServicio)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.CarnetServicio == 1)
+            {
+                <label value="@Model.CarnetServicio">Si</label>
+            }
+            else
+            {
+                <label value="@Model.CarnetServicio">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Duplicado)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Duplicado == 1)
+            {
+                <label value="@Model.Duplicado">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Duplicado">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LlantaRefaccion)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.LlantaRefaccion == 1)
+            {
+                <label value="@Model.LlantaRefaccion">Si</label>
+            }
+            else
+            {
+                <label value="@Model.LlantaRefaccion">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Herramientas)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Herramientas == 1)
+            {
+                <label value="@Model.Herramientas">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Herramientas">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Gato == 1)
+            {
+                <label value="@Model.Gato">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Gato">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Antena)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Antena == 1)
+            {
+                <label value="@Model.Antena">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Antena">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class="col-sm-2">
+            Numero Serie
+        </dt>
+        <dd class="col-sm-10"  >
+            @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
+        </dd>
+        <dt class="col-sm-2">
+            Version
+        </dt>
+        <dd class="col-sm-10">
+            <a  id="traerdatos" value="@Html.DisplayFor(model=>model.IdCarro)"></a>
+            <p id="VersionCarroo"></p>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdCarroExtra">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+

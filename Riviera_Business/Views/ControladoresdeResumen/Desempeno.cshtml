@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Desempeno";
+}
+
+<h1>Desempeño</h1>
+<hr />
+<div class="content">
+
+    <div class="row">
+
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <label for="id_ase">Asesor: </label>
+        </div>
+        <div class="col-md-4">
+            <select id="id_ase" class="form-control">
+                <option value="0">Seleccionar Asesor</option>
+                @foreach (var ase in ViewBag.asesores)
+                {
+                    <option value="@ase.IdAsesores">@ase.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-lg btn-success" id="btnSearch">Buscar</button>
+        </div>
+    </div>
+    <div class="row bg-white">
+        <div class="col-md-11">
+            <div class="box-header with-border">
+                <h3 class="box-title">Criterios</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        <tr>
+                            <td>Cantidad de seguimientos realizados</td>
+                            <td id="infoSeg"></td>
+                        </tr>
+                        <tr>
+                            <td>Número de pruebas de manejo</td>
+                            <td id="numP"></td>
+                        </tr>
+                        <tr>
+                            <td>Número de citas</td>
+                            <td id="numC"></td>
+                        </tr>
+                        <tr>
+                            <td>Número de anticipos</td>
+                            <td id="numA"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@ViewBag.tventa
+
+<script>
+
+    $(document).ready(function () {
+        $("#btnSearch").on("click", function () {
+
+            var data = document.getElementById("id_ase").value;
+            //var v = document.getElementById("infoSeg");
+            //var x = document.getElementById("numP");
+            //var y = document.getElementById("numC");
+            //var z = document.getElementById("numA");
+
+            $.ajax({
+                url: '/ControladoresdeResumen/Search',
+                method: "POST",
+                data: { id: data },
+                success: function (e) {
+                    $("#infoSeg").html( e[0] );
+                    $("#numP").html(e[1]);
+                    $("#numC").html(e[2]);
+                    $("#numA").html(e[3]);
+                }
+            });
+
+        });
+    });
+
+</script>

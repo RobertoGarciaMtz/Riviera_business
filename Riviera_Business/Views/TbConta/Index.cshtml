@@ -1,0 +1,179 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbConta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Contabilidad</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Agregar nuevo mov</a>
+</p>
+<p>Lista de Movimiento o control de contadurias</p>
+
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Inicial:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Fecha Final:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table" id="dataTable1" style="width:100%">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CargoAbono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaTramite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBancoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @if (item.CargoAbono == 1)
+                    {
+                        <label value="@item.CargoAbono">Cargo</label>
+                    }
+                    else
+                    {
+                        <label value="@item.CargoAbono">Abono</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaTramite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBancoNavigation.Nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdConta">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdConta">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdConta">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!---------------------------------------------------------->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CargoAbono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaTramite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBancoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @if (item.CargoAbono == 1)
+                    {
+                        <label value="@item.CargoAbono">Cargo</label>
+                    }
+                    else
+                    {
+                        <label value="@item.CargoAbono">Abono</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaTramite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBancoNavigation.Nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdConta">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdConta">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdConta">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[5].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

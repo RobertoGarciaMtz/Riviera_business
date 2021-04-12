@@ -1,0 +1,154 @@
+﻿@model Riviera_Business.Models.TbDocumentacion
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script>
+    function ocultar(select) {
+        if (select.value == 1) {
+            document.getElementById("desp1").style.display = "none";
+            document.getElementById("desp11").style.display = "none";
+            document.getElementById("desp11").value = 0;
+            document.getElementById("desp2").style.display = "none";
+            document.getElementById("desp22").style.display = "none";
+            document.getElementById("desp22").value = 0;
+        }
+        if (select.value == 2) {
+            document.getElementById("desp1").style.display = "block";
+            document.getElementById("desp11").style.display = "block";
+            
+            document.getElementById("desp2").style.display = "block";
+            document.getElementById("desp22").style.display = "block";
+        }
+    }
+</script>
+<h1>Agregar</h1>
+
+<h4>Documentacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <a>Persona Fisica o moral</a>
+                <select asp-for="PersonaFM" onchange="ocultar(this)" class="form-control">
+                    <option value="1">Fisica</option>
+                    <option value="2">Moral/Representante</option>
+                </select>
+                <span asp-validation-for="PersonaFM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdentificacionVig" class="control-label">Identificacion Vigente</label>
+                <select asp-for="IdentificacionVig" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="IdentificacionVig" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Curp" class="control-label"></label>
+                <select asp-for="Curp" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="Curp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CifSat" class="control-label"></label>
+                <select asp-for="CifSat" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="CifSat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComprobDomicilio" class="control-label"></label>
+                <select asp-for="ComprobDomicilio" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ComprobDomicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConocimientoDuenoBeneficiario" class="control-label"></label>
+                <select asp-for="ConocimientoDuenoBeneficiario" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ConocimientoDuenoBeneficiario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActaConstitutivaBoletaRpc" id="desp1" class="control-label"></label>
+                <select asp-for="ActaConstitutivaBoletaRpc" id="desp11" class="form-control">
+                    <option value="0">---</option>
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ActaConstitutivaBoletaRpc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PoderLegarExp" id="desp2" class="control-label"></label>
+                <select asp-for="PoderLegarExp" id="desp22" class="form-control">
+                    <option value="0">----</option>
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="PoderLegarExp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConstanciaConocimiento" class="control-label"></label>
+                <select asp-for="ConstanciaConocimiento" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ConstanciaConocimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estado"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDatosPersona" class="control-label">Persona a la que corresponde</label>
+                <select asp-for="IdDatosPersona" class="form-control selectdos" asp-items="ViewBag.Datospersona"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MesCorrespondiente" class="control-label"></label>
+                <select asp-for="MesCorrespondiente" class="form-control">
+                    <option value="0">Elegir Mes</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiempre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                
+                <span asp-validation-for="MesCorrespondiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista Personas Moral</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbCondiciones>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Condiciones Llantas</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Agregar Nuevo</a>
+</p>
+<p>Seleccionar el Automovil al que se le haran los gastos para posteriormente especificarlo </p>
+<table class="table" id="dataTable" style="width:100%;">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LlantaDi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlantaDd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlanraTi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlantaTd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.LlantaDi == 1)
+                {
+                    <label value="@item.LlantaDi">N</label>
+                }
+                @if (item.LlantaDi == 2)
+                {
+                    <label value="@item.LlantaDi">1/2</label>
+                }
+                @if (item.LlantaDi == 3)
+                {
+                    <label value="@item.LlantaDi">1/4</label>
+                }
+                @if (item.LlantaDi == 4)
+                {
+                    <label value="@item.LlantaDi">L</label>
+                }
+            </td>
+            <td>
+                @if (item.LlantaDd == 1)
+                {
+                    <label value="@item.LlantaDd">N</label>
+                }
+                @if (item.LlantaDd == 2)
+                {
+                    <label value="@item.LlantaDd">1/2</label>
+                }
+                @if (item.LlantaDd == 3)
+                {
+                    <label value="@item.LlantaDd">1/4</label>
+                }
+                @if (item.LlantaDd == 4)
+                {
+                    <label value="@item.LlantaDd">L</label>
+                }
+            </td>
+            <td>
+                @if (item.LlanraTi == 1)
+                {
+                    <label value="@item.LlanraTi">N</label>
+                }
+                @if (item.LlanraTi == 2)
+                {
+                    <label value="@item.LlanraTi">1/2</label>
+                }
+                @if (item.LlanraTi == 3)
+                {
+                    <label value="@item.LlanraTi">1/4</label>
+                }
+                @if (item.LlanraTi == 4)
+                {
+                    <label value="@item.LlanraTi">L</label>
+                }
+            </td>
+            <td>
+                @if (item.LlantaTd == 1)
+                {
+                    <label value="@item.LlantaTd">N</label>
+                }
+                @if (item.LlantaTd == 2)
+                {
+                    <label value="@item.LlantaTd">1/2</label>
+                }
+                @if (item.LlantaTd == 3)
+                {
+                    <label value="@item.LlantaTd">1/4</label>
+                }
+                @if (item.LlantaTd == 4)
+                {
+                    <label value="@item.LlantaTd">L</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCondiciones">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCondiciones">Detalles</a> |
+                <a asp-controller="TbGastos" asp-action="Create">Gastos Extra</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

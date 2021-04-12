@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Riviera_Business.Models.CMarcaCarro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1 class="text-center">Marcas Disponibles</h1><br />
+    <a class="btn btn-success mb-3" asp-action="Create">Agregar nueva marca</a>
+    <p>Todas las marcas manejadas por la empresa (No son inventario)</p>
+<table class="" style="width:100%;" id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Marca Vehiculo 
+            </th>
+            <th>
+                Agregado por
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info mr-2" asp-action="Edit" asp-route-id="@item.IdMarcaCarro">Corregir</a>
+                <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-id="@item.IdMarcaCarro">Detalles</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="text-center">
+    <p class="">Para ir a inventario dar click en el enlace:</p>
+    <a class="btn btn-sm btn-outline-primary" asp-controller="TbCarros" asp-action="Index">Inventario</a>
+</div>

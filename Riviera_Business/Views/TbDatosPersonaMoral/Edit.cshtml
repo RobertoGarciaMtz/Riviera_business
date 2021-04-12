@@ -1,0 +1,125 @@
+﻿@model Riviera_Business.Models.TbDatosPersonaMoral
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Datos Persona Moral</h4>
+<hr />
+<p>Este apartado sirve para terminar de llenar los datos de una empresa o editar cualquier dato erroneo</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdDatosPm" />
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DenominacionRazonSocial" class="control-label"></label>
+                <input asp-for="DenominacionRazonSocial" class="form-control" />
+                <span asp-validation-for="DenominacionRazonSocial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaConstitucion" class="control-label"></label>
+                <input asp-for="FechaConstitucion" class="form-control" />
+                <span asp-validation-for="FechaConstitucion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoActa" class="control-label"></label>
+                <input asp-for="NoActa" class="form-control" />
+                <span asp-validation-for="NoActa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaRegistroPublicoComercio" class="control-label"></label>
+                <input asp-for="FechaRegistroPublicoComercio" class="form-control" />
+                <span asp-validation-for="FechaRegistroPublicoComercio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoRegistroPublicoComercio" class="control-label"></label>
+                <input asp-for="NoRegistroPublicoComercio" class="form-control" />
+                <span asp-validation-for="NoRegistroPublicoComercio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nacionalidad" class="control-label"></label>
+                <input asp-for="Nacionalidad" class="form-control" />
+                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActividadGiroMercantilObjeto" class="control-label"></label>
+                <input asp-for="ActividadGiroMercantilObjeto" class="form-control" />
+                <span asp-validation-for="ActividadGiroMercantilObjeto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreCalle" class="control-label"></label>
+                <input asp-for="NombreCalle" class="form-control" />
+                <span asp-validation-for="NombreCalle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumInterior" class="control-label"></label>
+                <input asp-for="NumInterior" class="form-control" />
+                <span asp-validation-for="NumInterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumExterior" class="control-label"></label>
+                <input asp-for="NumExterior" class="form-control" />
+                <span asp-validation-for="NumExterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colonia" class="control-label"></label>
+                <input asp-for="Colonia" class="form-control" />
+                <span asp-validation-for="Colonia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cd" class="control-label"></label>
+                <input asp-for="Cd" class="form-control" />
+                <span asp-validation-for="Cd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cp" class="control-label"></label>
+                <input asp-for="Cp" class="form-control" />
+                <span asp-validation-for="Cp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumTelefono" class="control-label"></label>
+                <input asp-for="NumTelefono" class="form-control" />
+                <span asp-validation-for="NumTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoElectronico" class="control-label"></label>
+                <input asp-for="CorreoElectronico" class="form-control" />
+                <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rfc" class="control-label"></label>
+                <input asp-for="Rfc" class="form-control" />
+                <span asp-validation-for="Rfc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista Edit</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

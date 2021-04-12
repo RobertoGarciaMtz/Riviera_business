@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Riviera_Business.Models.CConcepto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Conceptos disponibles</h1>
+<a class="btn btn-success" asp-action="Create">Agregar Concepto</a>
+<table style="width:100%" id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Concepto
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionConcepto)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.IdCConcepto">Editar</a> |
+                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.IdCConcepto">Detalles</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

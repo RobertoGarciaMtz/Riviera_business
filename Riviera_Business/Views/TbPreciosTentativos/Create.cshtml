@@ -1,0 +1,60 @@
+﻿@model Riviera_Business.Models.TbPreciosTentativos
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Agregar</h1>
+
+<h4>Precios Tentativos Automoviles</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TipoVenta" class="control-label"></label>
+                <select asp-for="TipoVenta">
+                    <option value="1">Venta Retail </option>
+                    <option value="2">Venta Inter Agencia</option>
+                    <option value="3">Venta Expo</option>
+                </select>
+                <span asp-validation-for="TipoVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ub" class="control-label"></label>
+                <input asp-for="Ub" class="form-control" />
+                <span asp-validation-for="Ub" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porcentaje" class="control-label"></label>
+                <input style="justify-content:center" asp-for="Porcentaje" class="form-control" />
+                <span asp-validation-for="Porcentaje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCarro" class="control-label"></label>
+                <select asp-for="IdCarro" class ="form-control" asp-items="ViewBag.Carros"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <select asp-for="Estado" class ="form-control" asp-items="ViewBag.Estados"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista Automoviles</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

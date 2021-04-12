@@ -1,0 +1,86 @@
+﻿@model Riviera_Business.Models.CuentasPendientesCP
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CuentasPendientesCP</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCuentaPendiente" />
+            <div class="form-group">
+                <label asp-for="CuentasCobrarPagarOtras" class="control-label"></label>
+                <select asp-for="CuentasCobrarPagarOtras" class="form-control">
+                    <option value="1">Cuentas por Cobrar</option>
+                    <option value="2">Cuentas por Pagar</option>
+                    <option value="3">Otras Cuentas</option>
+                </select>
+                <span asp-validation-for="CuentasCobrarPagarOtras" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Folio" class="control-label"></label>
+                <input asp-for="Folio" class="form-control" />
+                <span asp-validation-for="Folio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label"></label>
+                <input asp-for="IdProveedor" class="form-control" />
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCliente" class="control-label"></label>
+                <input asp-for="IdCliente" class="form-control" />
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdConcepto" class="control-label"></label>
+                <select asp-for="IdConcepto" class="form-control" asp-items="ViewBag.Concepto"></select>
+                <span asp-validation-for="IdConcepto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCarro" class="control-label"></label>
+                <select asp-for="IdCarro" class="form-control" asp-items="ViewBag.Caracarro"></select>
+                <span asp-validation-for="IdCarro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anticipo" class="control-label"></label>
+                <input asp-for="Anticipo" class="form-control" />
+                <span asp-validation-for="Anticipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Importe" class="control-label"></label>
+                <input asp-for="Importe" class="form-control" />
+                <span asp-validation-for="Importe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Detalle" class="control-label"></label>
+                <input asp-for="Detalle" class="form-control" />
+                <span asp-validation-for="Detalle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <a asp-action="Index" class="btn btn-info mr-2">Regresar</a>
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbLineaTiempo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de Automoviles y estados</h1>
+<p class="text-center">Aqui se muestra hasta el momento todos los Automoviles y los estados por los que han pasado </p>
+<div class="bg-white">
+    <table class="table" id="dataTable" style="width:100%">
+        <thead class="bg-secondary">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    Num Serie
+                </th>
+                <th>
+                    Version
+                </th>
+                <th>
+                    Modelo
+                </th>
+                <th>
+                    Marca
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

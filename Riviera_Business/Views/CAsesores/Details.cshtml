@@ -1,0 +1,41 @@
+﻿@model Riviera_Business.Models.CAsesores
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalle de asesor</h1>
+<hr />
+<div>
+    <dl class="row">
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.TipoVenta)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @if (Model.TipoVenta == 1)
+            {
+                <label value="@Model.TipoVenta">Retail</label>
+            }
+            else
+            {
+                <label value="@Model.TipoVenta">InterAgencias</label>
+            }
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAsesores">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

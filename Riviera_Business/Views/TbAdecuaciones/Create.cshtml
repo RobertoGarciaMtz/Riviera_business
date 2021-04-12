@@ -1,0 +1,90 @@
+﻿@model Riviera_Business.Models.TbAdecuaciones
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center">Agregar Adecuaciones</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <p>En este apartado se llevara un registro de las acciones realizadas a un Auto</p>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label">Fecha del Registro</label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCarro" class="control-label">Carro al que pertenece este llenado</label>
+                <select asp-for="IdCarro" class="form-control selectdos" asp-items="ViewBag.Caracarro"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LavadoVestiduras" class="control-label">Se realizo lavado de vestiduras</label>
+                <select asp-for="LavadoVestiduras" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="LavadoVestiduras" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PulidoEncerado" class="control-label">Hubo pulido y encerado</label>
+                <input asp-for="PulidoEncerado" class="form-control" />
+                <span asp-validation-for="PulidoEncerado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mecanica" class="control-label">Hubo reparaciones mecanicas </label>
+                <input asp-for="Mecanica" class="form-control" />
+                <span asp-validation-for="Mecanica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lavado" class="control-label">Se lavo el automovil</label>
+                <select asp-for="Lavado" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="Lavado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motor" class="control-label"></label>
+                <input asp-for="Motor" class="form-control" />
+                <span asp-validation-for="Motor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Traslado" class="control-label">Se realizo traslado</label>
+                <input asp-for="Traslado" class="form-control" />
+                <span asp-validation-for="Traslado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preparacion" class="control-label">Se realizaron reparaciones</label>
+                <input asp-for="Preparacion" class="form-control" />
+                <span asp-validation-for="Preparacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Otros" class="control-label">Se le aplicaron otros cambios</label>
+                <input asp-for="Otros" class="form-control" />
+                <span asp-validation-for="Otros" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <a class="btn btn-info mr-2" asp-action="Index">Lista Adecuaciones</a>
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

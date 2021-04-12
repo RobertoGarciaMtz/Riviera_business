@@ -1,0 +1,231 @@
+﻿ @model IEnumerable<Riviera_Business.Models.TbDatosPersona>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de Clientes</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Agregar Otra Persona</a>
+</p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Inicial:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Fecha Final:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+<p>Si la persona es "Fisica" los datos a partir de "Fecha Poder Notorial" se mostraran vacios </p>
+<table class="table"  id="dataTable1"  style="width:100%">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApellidoPaterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApellidoMaterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActividadUOcupacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCalle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoInterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoExterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colonia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rfc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroTelefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FisicaOMoral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPoderNotorial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoPoderNotorial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AutoridadEmite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th>
+                Denominacion Razon Social
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActividadUOcupacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCalle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoInterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoExterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colonia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rfc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroTelefono)
+            </td>
+            <td>
+                @if (item.FisicaOMoral == 1)
+                {
+                    <label value="@item.FisicaOMoral">Persona Unica</label>
+                }
+                else
+                {
+                    <label value="@item.FisicaOMoral">Representante</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPoderNotorial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoPoderNotorial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutoridadEmite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPmDpNavigation.DenominacionRazonSocial)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDatosPersona" class="btn btn-success">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdDatosPersona" class="btn btn-warning">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[5].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

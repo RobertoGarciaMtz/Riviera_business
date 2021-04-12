@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Riviera_Business.Models.Usuarios>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contraseña)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contraseña)
+            </td>
+            <td>
+                @if (item.TipoUsuario == 1)
+                {
+                    <label>Administrador</label>
+                }
+                @if (item.TipoUsuario == 2)
+                {
+                    <label>Papeleo y Movimientos</label>
+                }
+                @if (item.TipoUsuario == 3)
+                {
+                    <label>Ventas Inter</label>
+                }
+                @if (item.TipoUsuario == 4)
+                {
+                    <label>Ventas Retail</label>
+                }
+                @if (item.TipoUsuario == 5)
+                {
+                    <label>Compra Autos</label>
+                }
+                @if (item.TipoUsuario == 6)
+                {
+                    <label>Contabilidad</label>
+                }
+                @if (item.TipoUsuario == 7)
+                {
+                    <label>Calidad</label>
+                }
+                @if (item.TipoUsuario == 8)
+                {
+                    <label>Solo Ver</label>
+                }
+                @Html.DisplayFor(modelItem => item.TipoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.IdUsuarios">Editar</a>
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdUsuarios">Detalles</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdUsuarios">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

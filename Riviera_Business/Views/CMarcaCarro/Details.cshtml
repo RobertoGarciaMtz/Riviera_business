@@ -1,0 +1,29 @@
+﻿@model Riviera_Business.Models.CMarcaCarro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center">Detalles de Marca</h1>
+<hr />
+
+<div>
+    <dl class="row w-100">
+        <dt class="col-sm-2 bg-dark">
+            Marca:
+        </dt>
+        <dt class="col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.NombreMarca)
+        </dt>
+        <dt class="col-sm-2 bg-dark">
+            Agregado por:
+        </dt>
+        <dt class="col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Usuario)
+        </dt>
+    </dl>
+</div>
+<div class="justify-content-center text-right">
+    <a class="btn btn-sm btn-info mr-3" asp-action="Index"><span class="glyphicon glyphicon-chevron-left"></span>Regresar</a>
+    <a class="btn btn-sm btn-primary mr-4" asp-action="Edit" asp-route-id="@Model.IdMarcaCarro">Editar</a>
+</div>

@@ -1,0 +1,58 @@
+﻿@model Riviera_Business.Models.Usuarios
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Usuarios</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" asp-controller="Signup" method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreUsuario" class="control-label"></label>
+                <input asp-for="NombreUsuario" class="form-control" />
+                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contraseña" class="control-label"></label>
+                <input asp-for="Contraseña" class="form-control" />
+                <span asp-validation-for="Contraseña" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoUsuario" class="control-label"></label>
+                <select asp-for="TipoUsuario" class="form-control">
+                    <option value="0">Tipo de Usuario</option>
+                    <option value="1">Administrador</option><!-- Jefe y programador-->
+                    <option value="2">Movimientos</option><!--Carito y persona encargada de papeleo -->
+                    <option value="3">Ventas Interagencias</option><!-- Gustavo y caro de  nuevo-->
+                    <option value="4">Ventas Retail</option><!--vendedores afuera/va con seguimiento y vista a inventario -->
+                    <option value="5">Compras</option><!--Gustavo-Alejandra-PosiblePersona Futura -->
+                    <option value="6">Contabilidad</option><!--contador  -->
+                    <option value="7">Calidad</option><!-- Persona nueva-->
+                    <option value="8">Usuario comun</option><!--Personas para unicamente visualizacion -->
+                </select>
+                <span asp-validation-for="TipoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label">Estado de la persona </label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"> </select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

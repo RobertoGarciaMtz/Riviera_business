@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Riviera_Business.Models.CMetodoPago>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Metodos de pago</h1>
+<a class="btn btn-success" asp-action="Create">Agregar metodos de pago</a>
+<table class="table" style="width:100%;">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Usuario
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.IdMetodoPago">Editar</a> |
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.IdMetodoPago">Detalles</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

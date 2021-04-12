@@ -1,0 +1,52 @@
+﻿@model Riviera_Business.Models.CPreAcondicionamiento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles de preacondicionamiento</h1>
+<hr />
+<div>
+    <dl class="row">
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.Mec)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Mec)
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.Refac)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Refac)
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.Esteticos)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Esteticos)
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.Hyp)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Hyp)
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.Trasl)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Trasl)
+        </dd>
+        <dt class = "col-sm-3 bg-dark">
+            @Html.DisplayNameFor(model => model.TbCarrosIdCarrosNavigation)
+        </dt>
+        <dd class = "col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.TbCarrosIdCarrosNavigation.NoSerie)
+        </dd>
+    </dl>
+</div>
+<div class="text-right">
+    <a class="btn btn-info" asp-action="Index">Regresar</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.IdPreAcondicionamiento">Edit</a>
+</div>

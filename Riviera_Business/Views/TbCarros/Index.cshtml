@@ -1,0 +1,298 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbCarros>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script>
+    $('#tableid').on('click', 'button', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $('#tableid').on('change', 'select', function () {
+        if ($(this).val()) { $(this).next().show(); }
+    });
+    
+</script>
+
+<h1 class="text-center">Carros comprados</h1>
+<a class="btn btn-success" asp-action="Create">Llenar otra Oferta</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <p style="font-size:large;font-family:Arial;color:firebrick">Descripcion </p>
+            <p>En este apartado se terminaran de llenar o eliminar los datos de las ofertas de los automoviles</p>
+            <p>
+                En caso de haber sido aceptado se prodecera a pulsar el boton editar para terminar de llenar los datos y cambiar el estado
+                esto para proceder con su Valuacion
+            </p>
+            <p>En caso de no  haber sido aceptadoo se procedera a pulsar el boton de eliminar y dentro tendra mas instrucciones</p>
+    </div>
+        <div class="col-md-10">
+            <table border="0" cellspacing="5" cellpadding="5" class="w-100">
+                <tbody>
+                    <tr>
+                        <td>Fecha Inicial:</td>
+                        <td><input type="text" id="min" name="min" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha Final:</td>
+                        <td><input type="text" id="max" name="max" class="form-control"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12">
+            <table class="table" id="dataTable1">
+
+                <thead>
+                    <tr>
+                        <th>
+                            Proveedor
+                        </th>
+                        <th>
+                            Tipo de compra
+                        </th>
+                        <th>
+                            Kilometraje
+                        </th>
+                        <th>
+                            Folio Fiscal
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaFactToma)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Antiguedad)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modelo)
+                        </th>
+                        <th>
+                            Color Externo
+                        </th>
+                        <th>
+                            Color Interno
+                        </th>
+                        <th>
+                            Núm de serie
+                        </th>
+                        <th>
+                            No. motor
+                        </th>
+                        <th>
+                            Número Economico
+                        </th>
+                        <th>
+                            MVA
+                        </th>
+                        <th>
+                            Transmisión
+                        </th>
+                        <th>
+                            Clave Vehicular
+                        </th>
+                        <th>
+                            Num. Dueños
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Origen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ubicacion)
+                        </th>
+                        <th>
+                            Propuesta de cliente
+                        </th>
+                        <th>
+                            Fecha de oferta
+                        </th>
+                        <th>
+                            Versión Automovil
+                        </th>
+                        <th>
+                            Modelo Automovil
+                        </th>
+                        <th>
+                            Marca Automovil
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdEstadoNavigation.Descripcion)
+                        </th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.TipoCompraCanal == 1)
+                                {
+                                    @foreach (var dist in (IEnumerable<TbDatosPersonaMoral>)ViewBag.Personamoral)
+                                    {
+                                        @if (dist.IdDatosPm == item.IdProveedor)
+                                        {
+                                            @dist.DenominacionRazonSocial
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    @foreach (var dist in (IEnumerable<TbDatosPersona>)ViewBag.Persona)
+                                    {
+                                        @if (dist.IdDatosPersona == item.IdProveedor)
+                                        {
+                                            @dist.Nombre
+                                        }
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @if (item.TipoCompraCanal == 1)
+                                {
+                                    <label value="@item.IdProveedor">InterAgencias</label>
+                                }
+                                else
+                                {
+                                    <label value="@item.IdProveedor">Retail</label>
+                                }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Kms)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FolioFiscal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaFactToma)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Antiguedad)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Modelo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ColorExt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ColorInt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoSerie)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoMotor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumEconomicoOpc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MvaOpc)
+                            </td>
+                            <td>
+                                @if (item.Transmision == 1)
+                                {
+                                    <label value="@item.IdProveedor">Manual</label>
+                                }
+                                @if (item.Transmision == 2)
+                                {
+                                    <label value="@item.IdProveedor">Secuencial</label>
+                                }
+                                @if (item.Transmision == 3)
+                                {
+                                    <label value="@item.IdProveedor">Automatico</label>
+                                }
+                                @if (item.Transmision == 4)
+                                {
+                                    <label value="@item.IdProveedor">CVT</label>
+                                }
+                                @if (item.Transmision == 5)
+                                {
+                                    <label value="@item.IdProveedor">Automatizada Doble</label>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClaveVehicular)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DuenoAnterior)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Origen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ubicacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropuestaCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaOferta)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.IdCarros" class="btn btn-success">Llenado</a>
+                                <a asp-action="Details" asp-route-id="@item.IdCarros" class="btn btn-warning ">Detalles</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdCarros" class="btn btn-dark">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[19].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

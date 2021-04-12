@@ -1,0 +1,122 @@
+﻿@model Riviera_Business.Models.TbCondiciones
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TbCondiciones</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LlantaDi)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.LlantaDi == 1)
+            {
+                <label value="@Model.LlantaDi">Nueva</label>
+            }
+            @if (Model.LlantaDi == 2)
+            {
+                <label value="@Model.LlantaDi">Mitad</label>
+            }
+            @if (Model.LlantaDi == 3)
+            {
+                <label value="@Model.LlantaDi">Cuarto</label>
+            }
+            @if (Model.LlantaDi == 4)
+            {
+                <label value="@Model.LlantaDi">Lisa</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LlantaDd)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.LlantaDd == 1)
+            {
+                <label value="@Model.LlantaDd">Nueva</label>
+            }
+            @if (Model.LlantaDd == 2)
+            {
+                <label value="@Model.LlantaDd">Mitad</label>
+            }
+            @if (Model.LlantaDd == 3)
+            {
+                <label value="@Model.LlantaDd">Cuarto</label>
+            }
+            @if (Model.LlantaDd == 4)
+            {
+                <label value="@Model.LlantaDd">Lisa</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LlanraTi)
+        </dt>
+        <dd class="col-sm-10">
+
+            @if (Model.LlanraTi == 1)
+            {
+                <label value="@Model.LlanraTi">Nueva</label>
+            }
+            @if (Model.LlanraTi == 2)
+            {
+                <label value="@Model.LlanraTi">Mitad</label>
+            }
+            @if (Model.LlanraTi == 3)
+            {
+                <label value="@Model.LlanraTi">Cuarto</label>
+            }
+            @if (Model.LlanraTi == 4)
+            {
+                <label value="@Model.LlanraTi">Lisa</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LlantaTd)
+        </dt>
+        <dd class="col-sm-10">
+
+            @if (Model.LlantaTd == 1)
+            {
+                <label value="@Model.LlantaTd">Nueva</label>
+            }
+            @if (Model.LlantaTd == 2)
+            {
+                <label value="@Model.LlantaTd">Mitad</label>
+            }
+            @if (Model.LlantaTd == 3)
+            {
+                <label value="@Model.LlantaTd">Cuarto</label>
+            }
+            @if (Model.LlantaTd == 4)
+            {
+                <label value="@Model.LlantaTd">Lisa</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCarroNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.IdCarros)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdCondiciones">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

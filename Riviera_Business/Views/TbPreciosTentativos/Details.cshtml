@@ -1,0 +1,65 @@
+﻿@model Riviera_Business.Models.TbPreciosTentativos
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Precios Tentativos</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoVenta)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.TipoVenta == 1)
+            {
+                <label value="@Model.TipoVenta">Precio Retail</label>
+            }
+            @if (Model.TipoVenta == 2)
+            {
+                <label value="@Model.TipoVenta">Precio Interagencias</label>
+            }
+            @if (Model.TipoVenta == 3)
+            {
+                <label value="@Model.TipoVenta">Precio Expo</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ub)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ub)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Porcentaje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Porcentaje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EstadoNavigation.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCarroNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdPreciosTentativos">Editar</a> |
+    <a asp-action="Index">Lista de Automoviles</a>
+</div>

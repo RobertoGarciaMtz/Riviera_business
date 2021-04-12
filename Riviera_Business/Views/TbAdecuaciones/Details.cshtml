@@ -1,0 +1,104 @@
+﻿@model Riviera_Business.Models.TbAdecuaciones
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TbAdecuaciones</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LavadoVestiduras)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.LavadoVestiduras == 1)
+            {
+                <label value="@Model.LavadoVestiduras">Si</label>
+            }
+            else
+            {
+                <label value="@Model.LavadoVestiduras">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PulidoEncerado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PulidoEncerado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mecanica)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mecanica)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lavado)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Lavado == 1)
+            {
+                <label value="@Model.Lavado">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Lavado">No</label>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Motor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Motor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Traslado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Traslado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Preparacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Preparacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Otros)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Otros)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCarroNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
+        </dd>
+        <dt class="col-sm-2">
+            Numero Motor
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.NoMotor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAdecuaciones">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

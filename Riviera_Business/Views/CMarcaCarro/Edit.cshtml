@@ -1,0 +1,34 @@
+﻿@model Riviera_Business.Models.CMarcaCarro
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Editar Marca</h1>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdMarcaCarro" />
+            <div class="form-group">
+                <label asp-for="NombreMarca" class="control-label"></label>
+                <input asp-for="NombreMarca" class="form-control" />
+                <span asp-validation-for="NombreMarca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <input type="submit" value="Guardar" class="mr-2 btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

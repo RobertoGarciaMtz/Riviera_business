@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbExportacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Personas de Exportacion</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table" id="dataTable" style="width:100%">
+    <thead >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdenCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cfdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xml)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PedimientoImpOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pagada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CfdiFpA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPromesaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartaPoderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entregada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ObservacionesReclamos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalidaAgencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th>
+                Nombre Persona
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdenCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cfdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xml)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PedimientoImpOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pagada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CfdiFpA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPromesaEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartaPoderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entregada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObservacionesReclamos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalidaAgencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPersonaNavigation.Nombre)
+                @Html.DisplayFor(modelItem => item.IdPersonaNavigation.ApellidoPaterno)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdExportacion">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdExportacion">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdExportacion">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

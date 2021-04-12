@@ -1,0 +1,133 @@
+﻿
+<!--- Esta vista pertenece al controlador de login-->
+@model Riviera_Business.Models.Usuarios
+
+@{
+
+    Layout = null;
+
+    string ru = ViewData["ReturnURL"] as string;
+
+}
+
+<style>
+    .login-la {
+        font-weight: bold;
+        color:white;
+        font-size: 20px;
+       }
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login - Bootstrap Admin Template</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-color:black">
+
+    <div class="navbar navbar-fixed-top">
+
+        <div class="navbar-inner">
+
+            <div class="container">
+
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+
+                        <li class="">
+                            <a asp-controller="Signup" asp-action="Index">
+                                No tienes cuenta
+                            </a>
+
+                        </li>
+                    </ul>
+
+                </div><!--/.nav-collapse -->
+
+            </div> <!-- /container -->
+
+        </div> <!-- /navbar-inner -->
+
+    </div> <!-- /navbar -->
+    <div class="content" style="text-align:center; margin-bottom: 5%">
+        <img src="~/dist/img/isologo.png" style="width:150px;height:150px; margin: 0 auto;" />
+    </div>
+
+    <div class="account-container" >
+
+        <div class="content clearfix" style="text-align:center;">
+
+            <form asp-action="Index">
+
+                <h1 style="color:white; text-align:center; font-family:'Albertus MT'">Inicia sesión</h1>
+
+                <div class="login-fields" style="margin-top:5%;">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-2" style="text-align:left;">
+                                <label for="username" class="login-la">Nombre Usuario:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input style="background-color:navajowhite;" type="text" asp-for="NombreUsuario" placeholder="Usuario" class="form-control" />
+                            </div> <!-- /field -->
+                        </div>
+                        <div class="row" style="margin-top:1%">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-2" style="text-align:left;">
+                                <label for="password" class="login-la">Contraseña:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input style="background-color:navajowhite;" type="password" asp-for="Contraseña" placeholder="Contraseña" class="form-control" />
+                            </div>
+                        </div> <!-- /password -->
+                    </div>
+                </div>
+                <div class="login-actions" style="margin-top:3%;">
+
+
+
+                    <button  style="position:relative;" class="btn btn-success btn-large">Sign In</button>
+
+                </div> <!-- .actions -->
+
+
+
+            </form>
+
+        </div> <!-- /content -->
+
+    </div> <!-- /account-container -->
+
+
+
+    <script src="~/js/jquery-1.7.2.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+    <script src="~/js/signin.js"></script>
+
+</body>
+
+</html>

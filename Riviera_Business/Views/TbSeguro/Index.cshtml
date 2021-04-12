@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbSeguro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aseguradora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumPoliza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPoliza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                Vehiculo a asegurar
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aseguradora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumPoliza)
+            </td>
+            <td>
+                @if (item.TipoPoliza == 1)
+                {
+                    <label>Mensual</label>
+                }
+                @if (item.TipoPoliza == 2)
+                {
+                    <label>Trimensual</label>
+                }
+                @if (item.TipoPoliza == 3)
+                {
+                    <label>Semestral</label>
+                }
+                @if (item.TipoPoliza == 4)
+                {
+                    <label>Anual</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAutoPerteneceNavigation.VersionCarro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSeguro">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSeguro">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSeguro">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

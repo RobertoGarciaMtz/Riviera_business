@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbDatosPersonaMoral>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista Persona Moral</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Agregar Persona Moral</a>
+</p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Constitucion:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+    </tbody>
+</table>
+<p>En este apartado apareceran todas las empresas con las cuales se ha tenido contacto</p>
+<table class="table" id="dataTable"  style="width:100%">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DenominacionRazonSocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaConstitucion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoActa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistroPublicoComercio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoRegistroPublicoComercio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActividadGiroMercantilObjeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCalle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumInterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumExterior)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colonia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumTelefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoElectronico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rfc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DenominacionRazonSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaConstitucion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoActa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistroPublicoComercio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoRegistroPublicoComercio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActividadGiroMercantilObjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCalle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumInterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumExterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colonia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumTelefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoElectronico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rfc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDatosPm" class="btn btn-success">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDatosPm" class="btn btn-warning">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDatosPm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,195 @@
+﻿@model IEnumerable<Riviera_Business.Models.CCarroExtra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="text-center">Lista de Aditamentos con los que venia</h1>
+<style>
+    .Entregado {
+        background-color: lightgreen;
+    }
+    .No_Entregado{
+        background-color: #ff726f;
+    }
+    .En_Espera {
+        background-color:darkgoldenrod;
+    }
+</style>
+
+<p>
+    <a class="btn-success" asp-action="Create">Agregar mas extras</a>
+</p>
+<p>Se muestran el numero de serie de los automoviles con sus extras</p>
+<table  style="width:100%;" id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manuales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarnetServicio)
+            </th>
+            <th>
+                Duplicado Llaves
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlantaRefaccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Herramientas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Antena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                Numero Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.Manuales == 1)
+                {
+                    <label value="@item.Manuales" class="Entregado">Entregado</label>
+                }
+                @if (item.Manuales == 2)
+                {
+                    <label value="@item.Manuales" class="No_Entregado">No entregado</label>
+                }
+                @if (item.Manuales == 3)
+                {
+                    <label value="@item.Manuales" class="En_Espera">En Espera</label>
+                }
+
+            </td>
+            <td>
+                @if (item.CarnetServicio == 1)
+                {
+                    <label value="@item.CarnetServicio" class="Entregado">Entregado</label>
+                }
+                @if (item.CarnetServicio == 2)
+                {
+                    <label value="@item.CarnetServicio" class="No_Entregado">No Entregado</label>
+                }
+                @if (item.CarnetServicio == 3)
+                {
+                    <label value="@item.CarnetServicio"class="En_Espera">En Espera</label>
+                }
+            </td>
+            <td>
+                @if (item.Duplicado == 1)
+                {
+                    <label value="@item.Duplicado" class="Entregado">Entregado</label>
+                }
+                @if (item.Duplicado == 2)
+                {
+                    <label value="@item.Duplicado" class="No_Entregado">No Entregado</label>
+                }
+                @if (item.Duplicado == 3)
+                {
+                    <label value="@item.Duplicado" class="En_Espera">En espera</label>
+                }
+            </td>
+            <td>
+                @if (item.LlantaRefaccion == 1)
+                {
+                    <label value="@item.LlantaRefaccion" class="Entregado">Tiene</label>
+                }
+                @if (item.LlantaRefaccion == 2)
+                {
+                    <label value="@item.LlantaRefaccion" class="No_Entregado">No Tiene</label>
+                }
+                @if (item.LlantaRefaccion == 3)
+                {
+                    <label value="@item.LlantaRefaccion" class="En_Espera">Para compra</label>
+                }
+            </td>
+            <td>
+                @if (item.Herramientas == 1)
+                {
+                    <label value="@item.Herramientas" class="Entregado">Entregado</label>
+                }
+                @if (item.Herramientas == 2)
+                {
+                    <label value="@item.Herramientas"class="No_Entregado">No Entregado</label>
+                }
+                @if (item.Herramientas == 3)
+                {
+                    <label value="@item.Herramientas"class="En_Espera">En Espera</label>
+                }
+            </td>
+            <td>
+                @if (item.Gato == 1)
+                {
+                    <label value="@item.Gato" class="Entregado">Trae</label>
+                }
+                @if (item.Gato == 2)
+                {
+                    <label value="@item.Gato" class="No_Entregado">No Trae</label>
+                }
+                @if (item.Gato == 3)
+                {
+                    <label value="@item.Gato" class="En_Espera">En Espera</label>
+                }
+            </td>
+            <td>
+                @if (item.Antena == 1)
+                {
+                    <label value="@item.Antena" class="Entregado">Trae</label>
+                }
+                @if (item.Antena == 2)
+                {
+                    <label value="@item.Antena" class="No_Entregado">No Trae</label>
+                }
+                @if (item.Antena == 3)
+                {
+                    <label value="@item.Antena" class="En_Espera">En Espera</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCarroExtra" class="btn btn-success" >Correccion o terminar</a>
+                <a asp-action="Details" asp-route-id="@item.IdCarroExtra" class="btn btn-warning">Detalles</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

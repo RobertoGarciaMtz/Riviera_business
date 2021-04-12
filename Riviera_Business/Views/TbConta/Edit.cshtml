@@ -1,0 +1,57 @@
+﻿@model Riviera_Business.Models.TbConta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Apartado conta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdConta" />
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdBanco" class="control-label"></label>
+                <select asp-for="IdBanco" class="form-control" asp-items="ViewBag.Bancos"></select>
+                <span asp-validation-for="IdBanco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CargoAbono" class="control-label"></label>
+                <select asp-for="CargoAbono">
+                    <option value="1">Cargo</option>
+                    <option value="2">Abono</option>
+                </select>
+                <span asp-validation-for="CargoAbono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaTramite" class="control-label"></label>
+                <input asp-for="FechaTramite" class="form-control" />
+                <span asp-validation-for="FechaTramite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

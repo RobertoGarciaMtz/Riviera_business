@@ -1,0 +1,41 @@
+﻿@model Riviera_Business.Models.CVersionCarro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles de la versión</h1>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-3 bg-dark">
+            Marca:
+        </dt>
+        <dt class="col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+        </dt>
+        <dt class="col-sm-3 bg-dark">
+            Modelo:
+        </dt>
+        <dt class="col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.IdModeloNavigation.ModeloCarro)
+        </dt>
+        <dt class="col-sm-3 bg-dark">
+            Versión:
+        </dt>
+        <dt class="col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.VersionCarro)
+        </dt>
+        <dt class="col-sm-3 bg-dark">
+            Agregado por:
+        </dt>
+        <dt class="col-sm-9 bg-white">
+            @Html.DisplayFor(model => model.Usuario)
+        </dt>
+    </dl>
+</div>
+<div class="text-right">
+    <a class="btn btn-primary" asp-action="Index">Regresar</a>
+    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.IdVersionCarro">Editar</a>
+
+</div>

@@ -1,0 +1,121 @@
+﻿@model Riviera_Business.Models.TbDocumentacion
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Documentacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdDocumentos" />
+            <div class="form-group">
+                <label asp-for="PersonaFM" class="control-label"></label>
+                <select asp-for="PersonaFM" class="form-control">
+                    <option value="1">Fisica</option>
+                    <option value="2">Moral/Representante</option>
+                </select>
+                <span asp-validation-for="PersonaFM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdentificacionVig" class="control-label"></label>
+                <select asp-for="IdentificacionVig" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="IdentificacionVig" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Curp" class="control-label"></label>
+                <select asp-for="Curp" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="Curp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CifSat" class="control-label"></label>
+                <select asp-for="CifSat" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="CifSat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComprobDomicilio" class="control-label"></label>
+                <select asp-for="ComprobDomicilio" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ComprobDomicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConocimientoDuenoBeneficiario" class="control-label"></label>
+                <select asp-for="ConocimientoDuenoBeneficiario" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ConocimientoDuenoBeneficiario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActaConstitutivaBoletaRpc" class="control-label"></label>
+                <select asp-for="ActaConstitutivaBoletaRpc" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ActaConstitutivaBoletaRpc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PoderLegarExp" class="control-label"></label>
+                <select asp-for="PoderLegarExp" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="PoderLegarExp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConstanciaConocimiento" class="control-label"></label>
+                <select asp-for="ConstanciaConocimiento" class="form-control">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <span asp-validation-for="ConstanciaConocimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estado"></select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDatosPersona" class="control-label"></label>
+                <select asp-for="IdDatosPersona" class="form-control selectdos" asp-items="ViewBag.DatosPersona"></select>
+                <span asp-validation-for="IdDatosPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MesCorrespondiente" class="control-label"></label>
+                <input asp-for="MesCorrespondiente" class="form-control" />
+                <span asp-validation-for="MesCorrespondiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista de Personas Moral</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

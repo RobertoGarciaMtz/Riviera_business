@@ -1,0 +1,64 @@
+﻿@model Riviera_Business.Models.CAsesores
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Crear Asesor</h2>
+<script href="js">
+    $(document).ready(function () {
+        $("#texto").on("load", function () {
+         });
+    });
+</script>
+<hr />
+<p id="texto">Para agregar asesores en caso de haber llegado alguien nuevo</p>
+<div class="content">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <label asp-for="Nombre" class="control-label">Nombre Completo del Asesor:</label>
+            </div>
+            <div class="col-md-7">
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <label asp-for="IdEstado" class="control-label">Estado:</label>
+            </div>
+            <div class="col-md-5">
+                <label asp-for="TipoVenta" class="control-label">Elegir el tipo de venta que reliza</label>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estado"></select>
+            </div>
+            <div class="col-md-5">
+                <select asp-for="TipoVenta" class="form-control">
+                    <option value="1">Retail</option>
+                    <option value="2">Inter Agencias</option>
+                </select>
+                <span asp-validation-for="TipoVenta" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-11" style="text-align:right;">
+                <a asp-action="Index" class="btn btn-info">Lista de Asesores</a>
+                <input style="margin-left:1%;" type="submit" value="Agregar Asesor" class="btn btn-primary">
+            </div>
+        </div>
+</form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Riviera_Business.Models.CMedioPublicitario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de medios publicitarios</h1>
+<a class="btn btn-success" asp-action="Create">Agregar Nuevo Medio</a>
+<p>Lista de Medios Publicitarios o Cartera manejados por la empresa</p>
+<table class="table" id="dataTable" style="width: 100%;">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMedioPublicitario" class="btn btn-info btn-sm">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMedioPublicitario" class="btn btn-primary btn-sm">Detalles</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

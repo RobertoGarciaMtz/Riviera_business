@@ -1,0 +1,84 @@
+﻿@model Riviera_Business.Models.CuentasPendientesCP
+
+@{
+    ViewData["Title"] = "CuentasCobrar";
+}
+
+<h1>Agergar</h1>
+
+<h4>Cuenta por Cobrar</h4>
+<hr />
+<p>Ingresar una nueva cuenta por Cobrar</p>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CuentasCobrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CuentasCobrarPagarOtras" class="control-label">Modalidad</label>
+                <select asp-for="CuentasCobrarPagarOtras" class="form-control" >
+                    <option value="1">CuentaCobrar</option>
+                </select>
+                <span asp-validation-for="CuentasCobrarPagarOtras" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Folio" class="control-label"></label>
+                <input asp-for="Folio" class="form-control" />
+                <span asp-validation-for="Folio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label"></label>
+                <input asp-for="IdProveedor" class="form-control" />
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCliente" class="control-label"></label>
+                <input asp-for="IdCliente" class="form-control" />
+                <span asp-validation-for="IdCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdConcepto" class="control-label"></label>
+                <select asp-for="IdConcepto" class="form-control" asp-items="ViewBag.Concepto"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCarro" class="control-label"></label>
+                <select asp-for="IdCarro" class="form-control selectdos" asp-items="ViewBag.CaraCarro"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Monto</label>
+                <input asp-for="Importe" class="form-control" />
+                <span asp-validation-for="Importe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anticipo" class="control-label"></label>
+                <input asp-for="Anticipo" class="form-control" />
+                <span asp-validation-for="Anticipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Detalle" class="control-label"></label>
+                <input asp-for="Detalle" class="form-control" />
+                <span asp-validation-for="Detalle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+            </div>
+            <div class="form-group text-right">
+                <a class="btn btn-info mr-2" asp-action="Index">Regresar</a>
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

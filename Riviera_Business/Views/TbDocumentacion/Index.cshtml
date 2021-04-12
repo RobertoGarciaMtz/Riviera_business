@@ -1,0 +1,237 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbDocumentacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Documentacion Cliente</h1>
+<style>
+
+    .Entregado {
+        background-color: lightgreen;
+    }
+
+    .No_Entregado {
+        background-color: #ff726f;
+    }
+
+    .En_Espera {
+        background-color: darkgoldenrod;
+    }
+</style>
+<p>
+    <a asp-action="Create">Agregar mas Documentacion Cliente</a>
+</p>
+<table class="table" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonaFM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentificacionVig)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CifSat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprobDomicilio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConocimientoDuenoBeneficiario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActaConstitutivaBoletaRpc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoderLegarExp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConstanciaConocimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MesCorrespondiente)
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Persona correspondiente de documentacion
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @if (item.PersonaFM == 1)
+                {
+                    <label value="@item.PersonaFM">Fisica</label>
+                }
+                else
+                {
+                    <label value="@item.PersonaFM">Moral/Representante</label>
+                }
+            </td>
+            <td>
+                @if (item.IdentificacionVig == 1)
+                {
+                    <label value="@item.IdentificacionVig" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.IdentificacionVig" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.Curp == 1)
+                {
+                    <label value="@item.Curp" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Curp" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.CifSat == 1)
+                {
+                    <label value="@item.CifSat" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.CifSat" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ComprobDomicilio == 1)
+                {
+                    <label value="@item.ComprobDomicilio" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ComprobDomicilio" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ConocimientoDuenoBeneficiario == 1)
+                {
+                    <label value="@item.ConocimientoDuenoBeneficiario" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ConocimientoDuenoBeneficiario" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ActaConstitutivaBoletaRpc == 1)
+                {
+                    <label value="@item.ActaConstitutivaBoletaRpc" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ActaConstitutivaBoletaRpc" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.PoderLegarExp == 1)
+                {
+                    <label value="@item.PoderLegarExp" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.PoderLegarExp" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ConstanciaConocimiento == 1)
+                {
+                    <label value="@item.ConstanciaConocimiento" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ConstanciaConocimiento" class="No_Entregado">No</label>
+                }
+            </td>
+            <!-----------------------hasta aca llega ---------------------------------->
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @if (item.MesCorrespondiente == 1)
+                {
+                    <label>Enero</label>
+                }
+                @if (item.MesCorrespondiente == 2)
+                {
+                    <label>Febrero</label>
+                }
+                @if (item.MesCorrespondiente == 3)
+                {
+                    <label>Marzo</label>
+                }
+                @if (item.MesCorrespondiente == 4)
+                {
+                    <label>Abril</label>
+                }
+                @if (item.MesCorrespondiente == 5)
+                {
+                    <label>Mayo</label>
+                }
+                @if (item.MesCorrespondiente == 6)
+                {
+                    <label>Junio</label>
+                }
+                @if (item.MesCorrespondiente == 7)
+                {
+                    <label>Julio</label>
+                }
+                @if (item.MesCorrespondiente == 8)
+                {
+                    <label>Agosto</label>
+                }
+                @if (item.MesCorrespondiente == 9)
+                {
+                    <label>Septiembre</label>
+                }
+                @if (item.MesCorrespondiente == 10)
+                {
+                    <label>Octubre</label>
+                }
+                @if (item.MesCorrespondiente == 11)
+                {
+                    <label>Noviembre</label>
+                }
+                @if (item.MesCorrespondiente == 12)
+                {
+                    <label>Diciembre</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Curp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDocumentos" class="btn btn-success">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdDocumentos" class="btn btn-warning">Detalles</a> 
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

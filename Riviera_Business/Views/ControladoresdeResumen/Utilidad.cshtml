@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Riviera_Business.Models.ZUtilidad>
+
+@{
+    ViewData["Title"] = "Utilidad";
+}
+
+<h1 class="text-center">Utilidad</h1>
+
+<table id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>Número de serie</th>
+            <th>Id Carro</th>
+            <th>Precio Compra</th>
+            <th>Precio Gasto</th>
+            <th>Precio Venta</th>
+            <th>Utilidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Numero_serie</td>
+                <td>@item.IdCarros </td>
+                <td>@item.Compra </td>
+                <td>@item.Gastos </td>
+                <td>@item.Venta </td>
+                <td>@item.Utilidad </td>
+            </tr>
+        }
+    </tbody>
+</table>

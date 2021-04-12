@@ -1,0 +1,130 @@
+﻿@model Riviera_Business.Models.TbPapelesCarro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Papeles Carro</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FactOrigen)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.FactOrigen == 1)
+            {
+                <label value="Model.FactOrigen">Entregado</label>
+            }
+            @if (Model.FactOrigen == 2)
+            {
+                 <label value="Model.FactOrigen">No Entregado</label>
+            }
+            @if (Model.FactOrigen == 3)
+            {
+                 <label value="Model.FactOrigen">Problemas</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RefactCompleta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RefactCompleta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tenencias4Anos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tenencias4Anos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Baja)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Baja == 1)
+            {
+                <label value="Model.Baja">Entregado</label>
+            }
+            @if (Model.Baja == 2)
+            {
+                <label value="Model.Baja">No Entregado</label>
+            }
+            @if (Model.Baja == 3)
+            {
+                <label value="Model.Baja">Problemas</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Verificacion)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Verificacion == 1)
+            {
+                <label value="Model.Verificacion">Tiene</label>
+            }
+            @if (Model.Verificacion == 2)
+            {
+                <label value="Model.Verificacion">No Tiene</label>
+            }
+            @if (Model.Verificacion == 3)
+            {
+                <label value="Model.Verificacion">Problemas</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaUlltimaVerificacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaUlltimaVerificacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Repuve)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Repuve)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEmisor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEmisor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Transunionfolio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model=> model.Transunionfolio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCarroNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            Con
+            @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdPapelesCarro">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

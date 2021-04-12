@@ -1,0 +1,149 @@
+﻿@model Riviera_Business.Models.TbCarros
+
+@{
+    ViewData["Title"] = "Elmas";
+}
+
+<h1>Elmas</h1>
+
+<div>
+   
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box p-1 h-100 bg-white">
+                <div class="box-header with-border">
+                    <h5 class="text-center">Red Social de mayor influencia</h5>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr class="bg-secondary">
+                            <th>Red Social</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        @foreach (var top1 in ViewBag.datos)
+                        {
+                            <tr>
+                                <td>@top1.Key</td>
+                                <td>@top1.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box p-1 h-100 bg-white">
+                <div class="box-header with-border">
+                    <h5 class="text-center">Red Social de mayor influencia</h5>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr class="bg-secondary">
+                            <th>Red Social</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        @foreach (var top1 in ViewBag.datos2)
+                        {
+                            <tr>
+                                <td>@top1.Key</td>
+                                <td>@top1.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box p-1 h-100 bg-white">
+                <div class="box-header with-border">
+                    <h5 class="text-center">Red Social de mayor influencia</h5>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr class="bg-secondary">
+                            <th>Red Social</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        @foreach (var top1 in ViewBag.datos3)
+                        {
+                            <tr>
+                                <td>@top1.Key</td>
+                                <td>@top1.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box p-1 h-100 bg-white">
+                <div class="box-header with-border">
+                    <h5 class="text-center">Color mas comprado</h5>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr class="bg-secondary">
+                            <th>Color</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        @foreach (var top1 in ViewBag.datos4)
+                        {
+                            <tr>
+                                <td>@top1.Key</td>
+                                <td>@top1.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box p-1 h-100 bg-white">
+                <div class="box-header with-border">
+                    <h5 class="text-center">El asesor con mas atendidos</h5>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr class="bg-secondary">
+                            <th>Asesor</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        @foreach (var top1 in ViewBag.datos5)
+                        {
+                            <tr>
+                                <td>@top1.Key</td>
+                                <td>@top1.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box p-1 h-100 bg-white">
+                <div class="box-header with-border">
+                    <h5 class="text-center">Modelo de automovil mas vendido</h5>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr class="bg-secondary">
+                            <th>automovil mas vendido</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        @foreach (var top1 in ViewBag.datos6)
+                        {
+                            <tr>
+                                <td>@top1.Key</td>
+                                <td>@top1.Value</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

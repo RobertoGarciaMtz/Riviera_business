@@ -1,0 +1,183 @@
+﻿@model Riviera_Business.Models.TbDatosPersona
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<script>
+    function esconderdemas(select) {
+        if (select.value == 1) {
+            document.getElementById("esconder1").style.display = "none";
+            document.getElementById("esconder2").style.display = "none";
+            document.getElementById("esconder3").style.display = "none";
+            document.getElementById("esconder4").style.display = "none";
+            document.getElementById("esconder5").style.display = "none";
+            document.getElementById("esconder11").style.display = "none";
+            document.getElementById("esconder22").style.display = "none";
+            document.getElementById("esconder33").style.display = "none";
+            document.getElementById("esconder44").style.display = "none";
+            document.getElementById("esconder55").style.display = "none";
+        }
+        else {
+            document.getElementById("esconder1").style.display = "block";
+            document.getElementById("esconder2").style.display = "block";
+            document.getElementById("esconder3").style.display = "block";
+            document.getElementById("esconder4").style.display = "block";
+            document.getElementById("esconder5").style.display = "block";
+            document.getElementById("esconder11").style.display = "block";
+            document.getElementById("esconder22").style.display = "block";
+            document.getElementById("esconder33").style.display = "block";
+            document.getElementById("esconder44").style.display = "block";
+            document.getElementById("esconder55").style.display = "block";
+        }
+    }
+
+</script>
+<h1>Editar</h1>
+
+<h4>Datos Personales</h4>
+<hr />
+<p>Este apartado es para corregir o terminar de llenar los datos de una persona </p>
+<p>Ya sea representante o persona fisica</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdDatosPersona" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoPaterno" class="control-label"></label>
+                <input asp-for="ApellidoPaterno" class="form-control" />
+                <span asp-validation-for="ApellidoPaterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoMaterno" class="control-label"></label>
+                <input asp-for="ApellidoMaterno" class="form-control" />
+                <span asp-validation-for="ApellidoMaterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nacionalidad" class="control-label"></label>
+                <input asp-for="Nacionalidad" class="form-control" />
+                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActividadUOcupacion" class="control-label"></label>
+                <input asp-for="ActividadUOcupacion" class="form-control" />
+                <span asp-validation-for="ActividadUOcupacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreCalle" class="control-label"></label>
+                <input asp-for="NombreCalle" class="form-control" />
+                <span asp-validation-for="NombreCalle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoInterior" class="control-label"></label>
+                <input asp-for="NoInterior" class="form-control" />
+                <span asp-validation-for="NoInterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoExterior" class="control-label"></label>
+                <input asp-for="NoExterior" class="form-control" />
+                <span asp-validation-for="NoExterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colonia" class="control-label"></label>
+                <input asp-for="Colonia" class="form-control" />
+                <span asp-validation-for="Colonia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cd" class="control-label"></label>
+                <input asp-for="Cd" class="form-control" />
+                <span asp-validation-for="Cd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cp" class="control-label"></label>
+                <input asp-for="Cp" class="form-control" />
+                <span asp-validation-for="Cp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Curp" class="control-label"></label>
+                <input asp-for="Curp" class="form-control" />
+                <span asp-validation-for="Curp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rfc" class="control-label"></label>
+                <input asp-for="Rfc" class="form-control" />
+                <span asp-validation-for="Rfc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroTelefono" class="control-label"></label>
+                <input asp-for="NumeroTelefono" class="form-control" />
+                <span asp-validation-for="NumeroTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FisicaOMoral" class="control-label"></label>
+                <select asp-for="FisicaOMoral" class="form-control">
+                    <option value="1">Persona</option>
+                    <option value="2">Representante</option>
+                </select>
+                <span asp-validation-for="FisicaOMoral" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estado"></select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaPoderNotorial" id="esconder1" class="control-label"></label>
+                <input asp-for="FechaPoderNotorial" id="esconder11"class="form-control" />
+                <span asp-validation-for="FechaPoderNotorial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoPoderNotorial" id="esconder2" class="control-label"></label>
+                <input asp-for="NoPoderNotorial" id="esconder22" class="form-control" />
+                <span asp-validation-for="NoPoderNotorial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AutoridadEmite" id="esconder3" class="control-label"></label>
+                <input asp-for="AutoridadEmite" id="esconder33" class="form-control" />
+                <span asp-validation-for="AutoridadEmite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPmDp" id="esconder4" class="control-label"></label>
+                <select asp-for="IdPmDp" id="esconder44" class="form-control selectdos" asp-items="ViewBag.Personamoral"></select>
+                <span asp-validation-for="IdPmDp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Puesto" id="esconder5" class="control-label"></label>
+                <input asp-for="Puesto" id="esconder55" class="form-control" />
+                <span asp-validation-for="Puesto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

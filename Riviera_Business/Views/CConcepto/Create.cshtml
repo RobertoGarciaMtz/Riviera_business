@@ -1,0 +1,34 @@
+﻿@model Riviera_Business.Models.CConcepto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center"><strong>Agregar</strong> concepto</h1>
+<hr />
+
+<div class="row">
+    <p>Apartado para llenar conceptos de Pago</p>
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DescripcionConcepto" class="control-label">Concepto:</label>
+                <input asp-for="DescripcionConcepto" class="form-control" />
+                <span asp-validation-for="DescripcionConcepto" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <a class="btn btn-info mr-2" asp-action="Index">Lista de Conceptos</a>
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

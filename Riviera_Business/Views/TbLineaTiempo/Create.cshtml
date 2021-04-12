@@ -1,0 +1,43 @@
+﻿@model Riviera_Business.Models.TbLineaTiempo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Cambiar el estado de un Automovil</h1>
+
+<h4>Agregar un nuevo paso en la linea de tiempo</h4>
+<p>Este apartado es el encargado de llevar el seguimiento que se le dara a un automovil
+    pasando por todos los estados siendo cambiados por el usuario </p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdCarro" class="control-label"></label>
+                <select asp-for="IdCarro" class ="form-control" asp-items="ViewBag.Caracarr"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estados"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista de Estado de Automoviles</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Riviera_Business.Models.CModeloCarro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Modelos disponibles</h1>
+<a class="btn btn-success mb-3" asp-action="Create">Agregar Modelo o Unidad</a>
+<p>Todos los modelos alguna vez manejados por una empresa (no es inventario)
+    Nota: Si se quiere buscar por Marca de automoviles escribir en el buscador</p>
+<table class="" width="100%" id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Agregado por
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info mr-2" asp-action="Edit" asp-route-id="@item.IdModeloCarro">Editar</a>
+                <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-id="@item.IdModeloCarro">Detalles</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="text-center">
+    <p>Para ir al inventario dar click en el enlace</p>
+    <a class="btn btn-sm btn-outline-info" asp-controller="TbCarros" asp-action="Index">Inventario</a>
+</div>

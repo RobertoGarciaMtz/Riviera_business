@@ -1,0 +1,248 @@
+﻿@model Riviera_Business.Models.TbSeguimiento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TbSeguimiento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdSeguimiento" />
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaHoraLlegada" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaHoraLlegada" class="form-control" />
+                    <span asp-validation-for="FechaHoraLlegada" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaHoraAsignacion" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaHoraAsignacion" class="form-control" />
+                    <span asp-validation-for="FechaHoraAsignacion" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdMedioPublicitario" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdMedioPublicitario" class="form-control" asp-items="ViewBag.Mediopubli"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="NombreCompleto" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="NombreCompleto" class="form-control" />
+                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Correo" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="Correo" class="form-control" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Telefono" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdAsesor" class="control-label">Asesor de Ventas:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdAsesor" class="form-control" asp-items="ViewBag.Asesor"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="TipoVenta" class="control-label">Tipo de venta:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="TipoVenta" class="form-control">
+                        <option value="1">Seminuevos</option>
+                        <option value="1">Nuevos</option>
+                    </select>
+                    <span asp-validation-for="TipoVenta" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdCarro" class="control-label">Auto de interes:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdCarro"  class="form-control selectdos" asp-items="ViewBag.Carros"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="AnioAuto" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="AnioAuto" class="form-control" />
+                    <span asp-validation-for="AnioAuto" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Contactado" class="control-label">Contactado: </label>
+                </div><div class="col-md-7">
+                    <select asp-for="Contactado" class="form-control">
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                    </select>
+                    <span asp-validation-for="Contactado" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="EnvioInformacion" class="control-label">Envío de información:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="EnvioInformacion" class="form-control">
+                        <option value="1">Whatsapp</option>
+                        <option value="2">Correo Electronico</option>
+                    </select>
+                    <span asp-validation-for="EnvioInformacion" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="AgendoCita" class="control-label">Agendo Cita:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="AgendoCita" class="form-control">
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                    </select>
+                    <span asp-validation-for="AgendoCita" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="AsistioCita" class="control-label">Asistio Cita</label>
+                </div><div class="col-md-7">
+                    <select asp-for="AsistioCita" class="form-control">
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                    </select>
+                    <span asp-validation-for="AsistioCita" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="UnidadToma" class="control-label">Unidad de toma:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="UnidadToma" class="form-control">
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                    </select>
+                    <span asp-validation-for="UnidadToma" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="RealizoPruebaManejo" class="control-label">Realizo P.M.</label>
+                </div><div class="col-md-7">
+                    <select asp-for="RealizoPruebaManejo" class="form-control">
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                        <option value="3">A domicilio</option>
+                        <option value="4">Cita</option>
+                    </select>
+                    <span asp-validation-for="RealizoPruebaManejo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdIngresoSolicitudBanco" class="control-label">Ingreso solicitud:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdIngresoSolicitudBanco" class="form-control" asp-items="ViewBag.Bancos"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="DejoApartadoEnganche" class="control-label">Enganche:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="DejoApartadoEnganche" class="form-control">
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                    </select>
+                    <span asp-validation-for="DejoApartadoEnganche" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaVenta" class="control-label">Fecha de Venta:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaVenta" class="form-control" />
+                    <span asp-validation-for="FechaVenta" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaFacturado" class="control-label">Fecha Facturado:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaFacturado" class="form-control" />
+                    <span asp-validation-for="FechaFacturado" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaEntrega" class="control-label">Fecha de entrega:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaEntrega" class="form-control" />
+                    <span asp-validation-for="FechaEntrega" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Comentarios" class="control-label">Comentarios</label>
+                </div><div class="col-md-7">
+                    <textarea rows="3" asp-for="Comentarios" class="form-control"></textarea>
+                    <span asp-validation-for="Comentarios" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="SeguimientoDesc" class="control-label">Seguimiento:</label>
+                </div><div class="col-md-7">
+                    <textarea rows="3" asp-for="SeguimientoDesc" class="form-control"></textarea>
+                    <span asp-validation-for="SeguimientoDesc" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaSigMovimiento" class="control-label">Fecha sig. Movimiento:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaSigMovimiento" class="form-control" />
+                    <span asp-validation-for="FechaSigMovimiento" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdEstado" class="control-label">Estado: </label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

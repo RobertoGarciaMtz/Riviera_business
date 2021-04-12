@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Riviera_Business.Models.CBanco>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bancos Disponibles</h1>
+<a asp-action="Create" class="btn btn-success">Agregar Banco</a>
+<p>Lista de bancos utilizados hasta el momento</p>
+<table id="dataTable" style="width:100%">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Banco
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdBanco" class="btn btn-success mr-2">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdBanco" class="btn btn-info">Detalles</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

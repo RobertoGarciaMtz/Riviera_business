@@ -1,0 +1,308 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbControl>
+
+@{
+    ViewData["Title"] = "IndexdeCompras";
+}
+
+<h1 class="text-center">Lista de Compras</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="CompraAut">Registrar Otra Compra </a>
+</p>
+
+<p>
+    En este apartado estaran todas las Compras de autos realizados y las personas a las que
+    pertenece o les fue realizada la transaccion con toda la comprobacion que este lleva
+</p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Inicial:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Fecha Final:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+<table class="table" id="dataTable1"  style="width:100%">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompraVenta)
+            </th>
+            <th>
+                Tipo de Compra
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoFacturaArv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFacturaToma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FolioFiscal)
+            </th>
+            <th>
+                Automovil en Cuestion
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagadaCobrada)
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoBoFacturarSat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoBoLeyAntiLavado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioPactado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Debiendo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadDebida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BajaCambProp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprobarId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConstanciaFiscal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurpPf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprobantesPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnticipoSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anticipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAsesorVentaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBancoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    Compra
+                </td>
+                <td>
+                    @if (item.TipoVenta == 1)
+                    {
+                        <label>InterAgencias o Flotilla</label> <!--Flotilla-->
+                    }
+                    @if (item.TipoVenta == 2)
+                    {
+                        <label>Retail</label> <!--Flotilla-->
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoFacturaArv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFacturaToma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FolioFiscal)
+                </td>
+                <td>
+                    @foreach (var dist1 in (IEnumerable<TbCarros>)ViewBag.Autos)
+                    {
+                        @if (dist1.IdCarros == item.IdCarros)
+                        {
+                            @dist1.NoSerie;
+                        }
+                    }
+                    @Html.DisplayFor(modelItem => item.IdCarros)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFactura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PagadaCobrada)
+                </td>
+                <td>
+                    @if (item.TipoVenta == 1)
+                    {
+                        @foreach (var dist in (IEnumerable<TbDatosPersonaMoral>)ViewBag.Personamoral)
+                        {
+                            @if (dist.IdDatosPm == item.IdCliente)
+                            {
+                                @dist.DenominacionRazonSocial
+                            }
+                        }
+                    }
+                    @if (item.TipoVenta == 2)
+                    {
+                        @foreach (var dist in (IEnumerable<TbDatosPersona>)ViewBag.Persona)
+                        {
+                            @if (dist.IdDatosPersona == item.IdCliente)
+                            {
+                                @dist.Nombre
+                            }
+                        }
+                    }
+                    @Html.DisplayFor(modelItem => item.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoBoFacturarSat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoBoLeyAntiLavado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuarios)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaES)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioPactado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Debiendo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadDebida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contrato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BajaCambProp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComprobarId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConstanciaFiscal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurpPf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComprobantesPago)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnticipoSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anticipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdAsesorVentaNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBancoNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdMovimiento" class="btn btn-success">Llenar/Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdMovimiento" class="btn btn-warning">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdMovimiento">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[3].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

@@ -1,0 +1,104 @@
+﻿@model Riviera_Business.Models.TbPapelesCarro
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Llenar </h1>
+
+<h4>Papeles de Automovil</h4>
+<hr />
+<p>En este apartado se llenaran los papelees con los qu deberia venir un automovil</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FactOrigen" class="control-label"></label>
+                <select asp-for="FactOrigen" class="form-control">
+                    <option value="1">Entregada</option>
+                    <option value="2">No entregada</option>
+                    <option value="3">Problemas</option>
+                </select>
+                <span asp-validation-for="FactOrigen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RefactCompleta" class="control-label">Refacturacion Completa</label>
+                <input asp-for="RefactCompleta" class="form-control" />
+                <span asp-validation-for="RefactCompleta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tenencias4Anos" class="control-label"></label>
+                <input asp-for="Tenencias4Anos" class="form-control" />
+                <span asp-validation-for="Tenencias4Anos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Baja" class="control-label">Baja Placas</label>
+                <select asp-for="Baja" class="form-control">
+                    <option value="1">Entregada</option>
+                    <option value="2">No entregada</option>
+                    <option value="3">Problemas</option>
+                </select>
+                <span asp-validation-for="Baja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verificacion" class="control-label">Verificacion vehicular</label>
+                <select asp-for="Verificacion" class="form-control">
+                    <option value="1">Tiene</option>
+                    <option value="2">No Tiene</option>
+                    <option value="3">Problemas</option>
+                </select>
+                <span asp-validation-for="Verificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaUlltimaVerificacion" class="control-label"></label>
+                <input asp-for="FechaUlltimaVerificacion" class="form-control" />
+                <span asp-validation-for="FechaUlltimaVerificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Repuve" class="control-label"></label>
+                <input asp-for="Repuve" class="form-control" />
+                <span asp-validation-for="Repuve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEmisor" class="control-label">Emisor</label>
+                <input asp-for="IdEmisor" class="form-control" />
+                <span asp-validation-for="IdEmisor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transunionfolio" class="control-label"></label>
+                <input asp-for="Transunionfolio" class="form-control"/>
+                <span asp-validation-for="Transunionfolio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mes" class="control-label"></label>
+                <input asp-for="Mes" class="form-control" />
+                <span asp-validation-for="Mes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estados"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCarro" class="control-label">Carros al que corresponde el papeleo</label>
+                <select asp-for="IdCarro" class ="form-control selectdos" asp-items="ViewBag.Carros"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista de Automoviles con papeles</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

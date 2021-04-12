@@ -1,0 +1,156 @@
+﻿@model IEnumerable<Riviera_Business.Models.CGuiaAutometricaEbc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .Autometrica{
+        background-color:lightslategray;
+        color:black;
+    }
+    .EBC{
+        background-color:royalblue;
+        color:black
+    }
+</style>
+<h1 class="text-center">Guias</h1>
+
+
+<p>
+    <a class="btn btn-primary" asp-action="CreaEBC">LlenarGuia EBC</a>
+    <a class="btn btn-success" asp-action="CreaAutometrica">Llenar Autometrica</a>
+</p>
+
+<p>Contiene todos los Automoviles registrados con todos sus respectivos precios y Guias  
+    tambien el mes la fecha a la que pertenecen</p>
+<div>
+    <table border="0" cellspacing="5" cellpadding="5" class="w-100">
+        <tbody>
+            <tr>
+                <td>A o E:</td>
+                <td><input type="text" id="min" name="min" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Fecha:</td>
+                <td><input type="text" id="max" name="max" class="form-control"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p style="font-size:small">Ingresar la fecha de la guia la cual se quiere ver</p>
+
+<table class="table" id="table-seguimiento">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Precio Toma
+            </th>
+            <th>
+                Precio Venta
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Media)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuiaAutometricaEbc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Toma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Media)
+                </td>
+                <td>
+                    @if (item.GuiaAutometricaEbc == 1)
+                    {
+                        <label value="@item.GuiaAutometricaEbc" class="Autometrica">Autometrica</label>
+                    }
+                    else
+                    {
+                        <label value="@item.GuiaAutometricaEbc" class="EBC">EBC</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdGuiaAutometrica" class="btn btn-success">Corregir</a> 
+                    <a asp-action="Details" asp-route-id="@item.IdGuiaAutometrica" class="btn btn-warning">Details</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = parseInt($('#min').val(), 10);
+            var max = parseInt($('#max').val(), 10);
+            var age = parseFloat(data[1]) || 0; // use data for the age column
+
+            if ((isNaN(min) && isNaN(max)) ||
+                (isNaN(min) && age <= max) ||
+                (min <= age && isNaN(max)) ||
+                (min <= age && age <= max)) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    $(document).ready(function () {
+        var table = $("#table-seguimiento").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

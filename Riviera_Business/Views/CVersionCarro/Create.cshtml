@@ -1,0 +1,68 @@
+﻿@model Riviera_Business.Models.CVersionCarro
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center"><strong>Agregar</strong> nueva versión</h1>
+<hr />
+<div class="row">
+    <p>En este apartado se agregara una nueva version de automovil en caso de no existir</p>
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Seleccionar Marca</label>
+                <select id="marcacarro" onchange="obtmarca(this)" class="form-control" asp-items="ViewBag.Marcas"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdModelo" class="control-label">Seleccionar Modelo</label>
+                <select asp-for="IdModelo" class="form-control" id="IdModelo" asp-items="ViewBag.Modelo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="VersionCarro" class="control-label">Agregar una Version</label>
+                <input asp-for="VersionCarro" class="form-control" />
+                <span asp-validation-for="VersionCarro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-right">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
+                <a asp-action="Index">Lista de Versiones</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function obtmarca(select) {
+        var idSelected = select.value;
+        console.log(select);
+        $.ajax({
+            url: "/CVersionCarro/recuperarmodelo",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (e) {
+                let selectModelo = document.getElementById("IdModelo");
+                let html = "";
+                for (var i = 0; i < e.length; i++) {
+                    html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
+                }
+                selectModelo.innerHTML = html;
+            }
+        });
+    }
+
+</script>

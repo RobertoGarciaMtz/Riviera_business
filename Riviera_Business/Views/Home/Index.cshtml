@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link href="~/css/site.css" rel="import">
+
+<style>
+    .parrafodesc {
+        font-size: medium;
+        font-family: 'Arial Rounded MT';
+        color: #000000;
+        align-content: center;
+        display: grid;
+    }
+
+    .houdini {
+        display: inline;
+        color: greenyellow;
+        border: medium;
+        border: solid;
+    }
+    .houdini2 {
+        display: inline;
+        color: greenyellow;
+        border: medium;
+        border: dotted;
+    }
+</style>
+
+<script>
+    $("document").ready(function () {
+        $("#hidec").on("click", function () {
+            $(".houdini").hide();
+        })
+
+        $("#showc").on("click", function () {
+            $(".houdini").show();
+        })
+
+        $("#hidet").on("click", function () {
+            $(".houdini2").hide();
+        })
+        $("#showt").on("click", function () {
+            $(".houdini2").show();
+        })
+    });
+</script>
+
+<div class="row"  style="background-color:azure">
+    <div class="text-center">
+
+        <img src="dist/img/SIST_CENTRALIZADO_R_B.png" alt="AdminLTE Logo" height="50" width="350" style="opacity: .8">
+        <p class="parrafodesc">
+            El proposito de este sistema es agilizar todos los procesos que conlleva la empresa,
+            asi como poder utilizarse de manera ordenada y sin la necesidad de traer de manera manual
+            datos utilizados en otras tablas.
+        </p>
+        <p class="parrafodesc">Ademas de poder visualizar los datos de manera ordenadas con filtros y tener una rapida busqueda</p>
+    <div style="height:20px;width:100px"></div>
+    <div>
+        <div style="display:flex; justify-content:space-evenly">
+            <a asp-controller="ControladoresdeResumen" asp-action="Desempeno">
+                <img src="~/dist/img/graphics-2.png" height="70" width="70" />
+                <img src="~/dist/img/DESEMPEÑO DE ASESORES.png" height="31" width="133" />
+            </a>
+            
+            <div  style="display:flex; justify-content:flex-end">
+                <a asp-controller="ControladoresdeResumen" asp-action="Elmas">
+                    <img src="~/dist/img/list.png" height="70" width="70" />
+                    <img src="~/dist/img/RESUMEN DE ESTADISTICAS.png" height="31" width="133" />
+                </a>
+            </div>
+            <div style="align-content:flex-start">
+                <a asp-controller="TbLineaTiempo" asp-action="Index">
+                    <img src="~/dist/img/time.png" height="70" width="70" />
+                    <img src="~/dist/img/LINEA DE TIEMPO DE OPERADORES.png" height="31" width="150" />
+                </a>
+            </div>
+            <div style="align-content:flex-end">
+                <a asp-controller="ControladoresdeResumen" asp-action="Utilidad">
+                    <img src="~/dist/img/stats.png" height="70" width="70" />
+                    <img src="~/dist/img/CONSUMOS Y UTILIDADES.png" height="31" width="133" />
+                </a>
+            </div>
+
+        </div>
+
+        <a asp-controller="TbCarros" asp-action="Create"><span>Agregar Nueva Oferta  Toma</span> </a>
+        <!--
+    <button id="hidec">ocultar ca</button> <button id="showc">mostrarca</button>
+    <button id="hidet">ocultar tb</button> <button id="showt">mostrar tb</button>
+
+    <div>
+        <h1>Catalogos</h1>
+        <div class="houdini">
+            <ul class=" nav-second-level">
+                <li class="active"><a asp-controller="CAsesores" asp-action="Create"><span>Agregar o modificar Asesores, </span> </a></li>
+                <li class="active"><a asp-controller="CBancos" asp-action="Create"><span>Agregar Bancos Nuevos, </span> </a></li>
+                <li class="active"><a asp-controller="CCarroExtras" asp-action="Create"><span>Chequeo de Complementos Automovil,  </span></a></li>
+                <li class="active"><a asp-controller="CConcepto" asp-action="Create"><span>Agregar conceptos nunevos,  </span></a></li>
+                <li class="active"><a asp-controller="CEstados" asp-action="Create"><span>Agregar Estado de utilidad nuevo,  </span></a></li>
+                <li class="active"><a asp-controller="CFormaPago" asp-action="Create"><span>Agregar nueva FormaPago,  </span></a></li>
+                <li class="active"><a asp-controller="CGuiaAutometricaEbc" asp-action="CreaEBC"><span>Llenar Guia EBC</span></a></li>
+                <li class="active"><a asp-controller="CGuiaAutometricaEbc" asp-action="CreaAutometrica"><span>Llenar Guia Autometrica </span></a></li>
+                <li class="active"><a asp-controller="CMarcaCarro" asp-action="Create"><span>Agregar nueva Marca Auto,</span></a></li>
+                <li class="active"><a asp-controller="CMedioPublicitario" asp-action="Create"><span>Agregar nnuevo Medio Publicitario,</span></a></li>
+                <li class="active"><a asp-controller="CModeloCarro" asp-action="Create"><span>Agregar nueva Unidad Auto(Modelo), </span> </a></li>
+                <li class="active"><a asp-controller="CPreAcondicionamiento" asp-action="Create"><span>Agregar Precios Tentativos de Acondicionamiento, </span> </a></li>
+                <li class="active"><a asp-controller="CTipoGasto" asp-action="Create"><span>Agregar nuevo TipoGasto, </span> </a></li>
+                <li class="active"><a asp-controller="CVersionCarro" asp-action="Create"><span>Agregar  nueva Version Auto,</span> </a></li>
+            </ul>
+        </div>
+        <h2>Tablas</h2>
+        <div class="houdini2">
+            <ul class="nav-second-level">
+                <li class="active"><a asp-controller="TbAdecuaciones" asp-action="Create"><span>Bitacora de Adecuaciones </span> </a></li>
+                <li class="active"><a asp-controller="TbCarros" asp-action="Create"><span>Agregar Nueva Oferta  Toma</span> </a></li>
+                <li class="active"><a asp-controller="TbCarrosTransaccion" asp-action="Create"><span>Sirve para Agregar Varios carros</span> </a></li>
+                <li class="active"><a asp-controller="TbCondiciones" asp-action="Create"><span>Llenar Condiciones en las que llego el automovil </span> </a></li>
+                <li class="active"><a asp-controller="TbConta" asp-action="Create"><span>Llenar tabla contabilidad </span> </a></li>
+                <li class="active"><a asp-controller="TbControl" asp-action="CompraAut"><span>Llenar datos Compra Autorizado de  Automoviles </span> </a></li>
+                <li class="active"><a asp-controller="TbControl" asp-action="VentaAut"><span>Llenar datos Venta Autorizada de  Automoviles </span> </a></li>
+                <li class="active"><a asp-controller="TbControl" asp-action="VentaRetail"><span>Llenar datos Venta Retail </span> </a></li>
+                <li class="active"><a asp-controller="TbDatosPersona" asp-action="Create"><span>Llenar Datos de Persona Fisica </span> </a></li>
+                <li class="active"><a asp-controller="TbDatosPersonaMoral" asp-action="Create"><span>Llenar Datos de Persona Moral </span> </a></li>
+                <li class="active"><a asp-controller="TbExportacion" asp-action="Create"><span>Llenar Tabla de Exportacion </span> </a></li>
+                <li class="active"><a asp-controller="TbGastos" asp-action="Create"><span>Agregar Gasto Realizado (Cualquier tipo) </span> </a></li>
+                <li class="active"><a asp-controller="TbLineaTiempo" asp-action="Create"><span>Crear o Agregar Nodos a la Linea de Tiempo de un Automovil </span> </a></li>
+                <li class="active"><a asp-controller="TbDocumentacion" asp-action="Create"><span>Llenar Tabla de  documentacion Fisica o Moral </span> </a></li>
+                <li class="active"><a asp-controller="TbPapelesCarro" asp-action="Create"><span>Comrpobar Papeles de Automovil </span> </a></li>
+                <li class="active"><a asp-controller="TbPreciosTentativos" asp-action="Create"><span>Llenar Precios tentativos de una unidad </span> </a></li>
+                <li class="active"><a asp-controller="TbPreciosTentativos" asp-action="Create"><span>Agregar precios tentativos de venta Automovil </span> </a></li>
+                <li class="active"><a asp-controller="TbProveedor" asp-action="Create"><span>Llenar datos de un proveedor </span> </a></li>
+                <li class="active"><a asp-controller="TbSeguimiento" asp-action="Create"><span>Prospecto </span> </a></li>
+                <li class="active"><a asp-controller="TbSeguro" asp-action="Create"><span>Llenar si un automovil salio con seguro </span> </a></li>
+                <li class="active"><a asp-controller="Usuarios" asp-action="Create"><span>Administrador de usuarios </span> </a></li>
+                <li class="active"><a asp-controller="CuentasPendientesCP" asp-action="CuentasCobrar"><span>Llenado de tabla cuentas por cobrar</span> </a></li>
+                <li class="active"><a asp-controller="CuentasPendientesCP" asp-action="CuentasPagar"><span>Llenado de la tabla cuentas por pagar </span> </a></li>
+                <li class="active"><a asp-controller="CuentasPendientesCP" asp-action="OtrasCuentas"><span>Llenado de la tabla Otras Cuentas por cobrar  </span> </a></li>
+            </ul>
+        </div>
+    </div>
+    <a asp-controller="Home" asp-action="Ejemplo">al menu</a>
+        -->
+    </div>
+    </div>
+</div>
+<!--
+    como trraer datos con jquery
+    jQuery(document).ready(function(){
+    $('.like').click(function() {
+       var $this = $(this);
+       $.ajax({
+            url: base_url+'quotes/quotes_rating',
+            type: 'GET',
+            data: {'id': id},
+            dataType: 'html',
+            success: function(d){
+              $this.html(d); //will set html of clicked link
+            }, error: function(){ //code for error }
+     });
+});
+
+    CONTROLADOR
+    public function quotes_rating() {
+    $id = $this->input->get('id');
+    $this->quotes_model->write_likes($id);
+        }
+    ------------------------------------------------------
+
+-->

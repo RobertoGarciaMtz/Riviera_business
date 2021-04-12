@@ -1,0 +1,36 @@
+﻿@model Riviera_Business.Models.CEstados
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1><strong>Agregar</strong> estados</h1>
+<hr />
+<div class="row">
+    <p>
+        En este apartado se agregaran los estados que puede tener tanto un
+        Automovil como un proceso
+    </p>
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripcion Estado</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <input type="submit" value="Agregar" class="btn btn-primary mr-2" />
+                <a class="btn btn-info" asp-action="Index">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

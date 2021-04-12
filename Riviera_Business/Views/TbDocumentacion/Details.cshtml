@@ -1,0 +1,147 @@
+﻿@model Riviera_Business.Models.TbDocumentacion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Documentacion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdentificacionVig)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IdentificacionVig == 1)
+            {
+                <label value="@Model.IdentificacionVig">Si</label>
+            }
+            else
+            {
+                <label value="@Model.IdentificacionVig">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Curp)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Curp == 1)
+            {
+                <label value="@Model.Curp">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Curp">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CifSat)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.CifSat == 1)
+            {
+                <label value="@Model.CifSat">Si</label>
+            }
+            else
+            {
+                <label value="@Model.CifSat">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComprobDomicilio)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ComprobDomicilio == 1)
+            {
+                <label value="@Model.ComprobDomicilio">Si</label>
+            }
+            else
+            {
+                <label value="@Model.ComprobDomicilio">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ConocimientoDuenoBeneficiario)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ConocimientoDuenoBeneficiario == 1)
+            {
+                <label value="@Model.ConocimientoDuenoBeneficiario">Si</label>
+            }
+            else
+            {
+                <label value="@Model.ConocimientoDuenoBeneficiario">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ActaConstitutivaBoletaRpc)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ActaConstitutivaBoletaRpc == 1)
+            {
+                <label value="@Model.ActaConstitutivaBoletaRpc">Si</label>
+            }
+            else
+            {
+                <label value="@Model.ActaConstitutivaBoletaRpc">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PoderLegarExp)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.PoderLegarExp == 1)
+            {
+                <label value="@Model.PoderLegarExp">Si</label>
+            }
+            else
+            {
+                <label value="@Model.PoderLegarExp">No</label>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ConstanciaConocimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ConstanciaConocimiento == 1)
+            {
+                <label value="@Model.ConstanciaConocimiento">Si</label>
+            }
+            else
+            {
+                <label value="@Model.ConstanciaConocimiento">No</label>
+            }
+        </dd>
+        <!------------------------------------------------------------------------------>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MesCorrespondiente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MesCorrespondiente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdDatosPersonaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdDatosPersonaNavigation.IdDatosPersona)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.IdEstados)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdDocumentos">Editar</a> |
+    <a asp-action="Index">Lista Personas Moral</a>
+</div>

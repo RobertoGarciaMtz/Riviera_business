@@ -1,0 +1,307 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbSeguimiento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de Seguimientos</h1>
+
+<style>
+    .afirmacion {
+        background-color: lightgreen;
+    }
+
+    .negacion {
+        background-color: #ff726f;
+    }
+</style>
+
+    <a asp-action="Create" class="btn btn-secondary">Nuevo seguimiento</a>
+<table border="0" cellspacing="5" cellpadding="5" class="w-100">
+    <tbody>
+        <tr>
+            <td>FechaInicial:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>FechaFinal:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+<table class="" id="dataTable1">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Fecha Recepcion
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaHoraAsignacion)
+            </th>
+            <th>
+                Medio publicitario/Canal
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                Nombre ASesor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnioAuto)
+            </th>
+            <th>
+                Automovil de Interes
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Contactado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnvioInformacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgendoCita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsistioCita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadToma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealizoPruebaManejo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DejoApartadoEnganche)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFacturado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeguimientoDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSigMovimiento)
+            </th>
+
+            <th>
+                Estado
+            </th>
+            <th>
+                Solicitud Banco
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaHoraLlegada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaHoraAsignacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMedioPublicitarioNavigation.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdAsesorNavigation.Nombre)
+                </td>
+                <td>
+                    @if (item.TipoVenta == 1)
+                    {
+                        <label>Seminuevos</label>
+                    }
+                    @if (item.TipoVenta == 2)
+                    {
+                        <label>Nuevos </label>
+                    }
+                    @Html.DisplayFor(modelItem => item.TipoVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnioAuto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+                </td>
+                <td>
+                    @if (item.Contactado == 1)
+                    {
+                        <label class="afirmacion">Si</label>
+                    }
+                    @if (item.Contactado == 2)
+                    {
+                        <label class="negacion">No</label>
+                    }
+                    @Html.DisplayFor(modelItem => item.Contactado)
+                </td>
+                <td>
+                    @if (item.EnvioInformacion == 1)
+                    {
+                        <label>Whatsapp</label>
+                    }
+                    @if (item.EnvioInformacion == 2)
+                    {
+                        <label>Correo Electronico</label>
+                    }
+                    @Html.DisplayFor(modelItem => item.EnvioInformacion)
+                </td>
+                <td>
+                    @if (item.AgendoCita == 1)
+                    {
+                        <label class="afirmacion"> Si</label>
+                    }
+                    @if (item.AgendoCita == 2)
+                    {
+                        <label class="negacion"> No</label>
+                    }
+                    @Html.DisplayFor(modelItem => item.AgendoCita)
+                </td>
+                <td>
+                    @if (item.AsistioCita == 1)
+                    {
+                        <label class="afirmacion"> Si</label>
+                    }
+                    @if (item.AsistioCita == 2)
+                    {
+                        <label class="negacion"> No</label>
+                    }
+                    @Html.DisplayFor(modelItem => item.AsistioCita)
+                </td>
+                <td>
+                    @if (item.UnidadToma == 1)
+                    {
+                        <label class="afirmacion"> Si</label>
+                    }
+                    @if (item.UnidadToma == 2)
+                    {
+                        <label class="negacion"> No</label>
+                    }
+                    @Html.DisplayFor(modelItem => item.UnidadToma)
+                </td>
+                <td>
+                    @if (item.RealizoPruebaManejo == 1)
+                    {
+                        <label class="afirmacion"> Si</label>
+                    }
+                    @if (item.RealizoPruebaManejo == 2)
+                    {
+                        <label class="negacion"> No</label>
+                    }
+                    @Html.DisplayFor(modelItem => item.RealizoPruebaManejo)
+                </td>
+                <td>
+                    @if (item.DejoApartadoEnganche == 1)
+                    {
+                        <label class="afirmacion">Si </label>
+                    }
+                    @if (item.DejoApartadoEnganche == 2)
+                    {
+                        <label class="negacion">No </label>
+                    }
+                    @Html.DisplayFor(modelItem => item.DejoApartadoEnganche)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFacturado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comentarios)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeguimientoDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaSigMovimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdIngresoSolicitudBancoNavigation.Nombre)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdSeguimiento" class="btn btn-success">Actualizar</a>
+                    <a asp-action="Details" asp-route-id="@item.IdSeguimiento" class="btn btn-info">Informacion</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[0].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

@@ -1,0 +1,33 @@
+﻿@model Riviera_Business.Models.CConcepto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar concepto</h1>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCConcepto" />
+            <div class="form-group">
+                <label asp-for="DescripcionConcepto" class="control-label"></label>
+                <input asp-for="DescripcionConcepto" class="form-control" />
+                <span asp-validation-for="DescripcionConcepto" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right">
+                <a class="btn btn-info" asp-action="Index">Regresar</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

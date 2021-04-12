@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbAdecuaciones>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Adecuaciones</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Agregar Adecuaciones</a>
+</p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+    </tbody>
+</table>
+<p>Lista de adecuaciones realizadas para los automoviles seleccionados</p>
+<table class="table" style="width:100%;" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                Fecha Registro
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LavadoVestiduras)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PulidoEncerado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mecanica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lavado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traslado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preparacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Otros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @if (item.LavadoVestiduras == 1)
+                {
+                    <label value="@item.LavadoVestiduras">Si</label>
+                }
+                else
+                {
+                    <label value="@item.LavadoVestiduras">No</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PulidoEncerado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mecanica)
+            </td>
+            <td>
+                @if (item.Lavado == 1)
+                {
+                    <label value="@item.Lavado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Lavado">No</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Traslado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preparacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Otros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAdecuaciones">Editar/Corregir</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAdecuaciones">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAdecuaciones">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

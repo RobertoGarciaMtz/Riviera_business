@@ -1,0 +1,231 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbPapelesCarro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .Entregado {
+        background-color: lightgreen;
+    }
+
+    .No_Entregado {
+        background-color: #ff726f;
+    }
+
+    .En_Espera {
+        background-color: lightyellow;
+    }
+</style>
+<h1>Lista de Automoviles con comprobantes</h1>
+
+<script>
+    $('#tableid').on('click', 'button', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $('#tableid').on('change', 'select', function () {
+        if ($(this).val()) { $(this).next().show(); }
+    });
+
+</script>
+<p>
+    <a class=" btn btn-success" asp-action="Create">Agregar mas comprobantes</a>
+</p>
+<p class="text-center">Lista de automoviles con sus papeles</p>
+
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Inicial:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+        <tr>
+            <td>Fecha Final:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+
+<p style="font-size:x-small"> Para buscar un automovil escribir en buscar</p>
+<table class="display nowrap" id="dataTable1" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FactOrigen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RefactCompleta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenencias4Anos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaUlltimaVerificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repuve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmisor)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.Transunionfolio)
+                ¿
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.FactOrigen == 1)
+                {
+                    <label value="@item.FactOrigen" class="Entregado">Entregada</label>
+                }
+                @if (item.FactOrigen == 2)
+                {
+                    <label value="@item.FactOrigen" class="No_Entregado">No Entregada</label>
+                }
+                @if (item.FactOrigen == 3)
+                {
+                    <label value="@item.FactOrigen" class="En_Espera">Problemas</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RefactCompleta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenencias4Anos)
+            </td>
+            <td>
+                @if (item.Baja == 1)
+                {
+                    <label value="@item.Baja" class="Entregado">Realizada</label>
+                }
+                @if (item.Baja == 2)
+                {
+                    <label value="@item.Baja" class="No_Entregado">No Realizada</label>
+                }
+                @if (item.Baja == 3)
+                {
+                    <label value="@item.Baja" class="En_Espera">Problemas</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaUlltimaVerificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repuve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmisor)
+            </td>
+            <td style="background-color:burlywood">
+                @Html.DisplayFor(modelItem => item.Transunionfolio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPapelesCarro" class="btn btn-success">Agregar/Modificar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdPapelesCarro" class="btn btn-warning">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[5].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true",
+            scrollCollapse: true,
+            columnDefs: [
+                {width: "20%", targets: 0 }
+            ],
+            fixedColumns: true
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Riviera_Business.Models.CAsesores>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de Asesores dentro de la empresa</h1>
+<a class="btn btn-success" asp-action="Create">Agregar Nuevo</a>
+
+
+<table  style="width:100%;" id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoVenta)
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @if (item.TipoVenta == 1)
+                {
+                    <label value="@item.TipoVenta">Retail</label>
+                }
+                else
+                {
+                    <label value="@item.TipoVenta">InterAgencias</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAsesores" class="btn btn-success">Editar Nombre</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAsesores" class="btn btn-info">Detalles</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,247 @@
+﻿@model Riviera_Business.Models.TbCarros
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Llenar</h1>
+
+<h4>Ofertas Autos</h4>
+<p>Habiendo autorizado la compra del automovil se procedera a llenar los campos vacios, una vez terminado,
+    cambiar el campo "Estado" al respectivo "Valuacion" </p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCarros" />
+            <div class="form-group">
+                <p>Seleccionar si fue Interagencias o Retail</p>
+                <label asp-for="TipoCompraCanal" class="control-label"></label>
+                <select  id="selectTipo"  asp-for="TipoCompraCanal" class="form-control">
+                    <option value="0">------------</option>
+                    <option value="1">Inter Agencias</option>
+                    <option value="2">Retail</option>
+                </select>
+                <span asp-validation-for="TipoCompraCanal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label">Proveedor</label>
+                <select asp-for="IdProveedor" id="selectProovedor" class="form-control selectdos"></select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kms" class="control-label">Kilometraje</label>
+                <input asp-for="Kms" class="form-control" />
+                <span asp-validation-for="Kms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FolioFiscal" class="control-label"></label>
+                <input asp-for="FolioFiscal" class="form-control" />
+                <span asp-validation-for="FolioFiscal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFactToma" class="control-label"></label>
+                <input asp-for="FechaFactToma" class="form-control" />
+                <span asp-validation-for="FechaFactToma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Antiguedad" class="control-label"></label>
+                <input asp-for="Antiguedad" class="form-control" />
+                <span asp-validation-for="Antiguedad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorExt" class="control-label"></label>
+                <input asp-for="ColorExt" class="form-control" />
+                <span asp-validation-for="ColorExt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorInt" class="control-label"></label>
+                <input asp-for="ColorInt" class="form-control" />
+                <span asp-validation-for="ColorInt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoSerie" class="control-label"></label>
+                <input asp-for="NoSerie" class="form-control" />
+                <span asp-validation-for="NoSerie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoMotor" class="control-label"></label>
+                <input asp-for="NoMotor" class="form-control" />
+                <span asp-validation-for="NoMotor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumEconomicoOpc" class="control-label"></label>
+                <input asp-for="NumEconomicoOpc" class="form-control" />
+                <span asp-validation-for="NumEconomicoOpc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MvaOpc" class="control-label"></label>
+                <input asp-for="MvaOpc" class="form-control" />
+                <span asp-validation-for="MvaOpc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Transmision</label>
+                <select asp-for="Transmision" id="cars" class="form-control">
+                    <option value="1">Manual</option>
+                    <option value="2">Secuencial</option>
+                    <option value="3">Automatico</option>
+                    <option value="3">CVT</option>
+                    <option value="3">Automatizada Doble</option>
+                </select>
+                <span asp-validation-for="Transmision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClaveVehicular" class="control-label"></label>
+                <input asp-for="ClaveVehicular" class="form-control" />
+                <span asp-validation-for="ClaveVehicular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label">Estado</label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdVersion" class="control-label"></label>
+                <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
+                <span asp-validation-for="IdVersion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DuenoAnterior" class="control-label"></label>
+                <input asp-for="DuenoAnterior" class="form-control" />
+                <span asp-validation-for="DuenoAnterior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Origen" class="control-label"></label>
+                <input asp-for="Origen" class="form-control" />
+                <span asp-validation-for="Origen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ubicacion" class="control-label"></label>
+                <input asp-for="Ubicacion" class="form-control" />
+                <span asp-validation-for="Ubicacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PropuestaCliente" class="control-label"></label>
+                <input asp-for="PropuestaCliente" class="form-control" />
+                <span asp-validation-for="PropuestaCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaOferta" class="control-label"></label>
+                <input asp-for="FechaOferta" class="form-control" />
+                <span asp-validation-for="FechaOferta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#esconder").on("click", function () {
+            $(".houdini").show();
+        })
+
+        var select = document.getElementById("selectTipo");
+
+        getPrrov(select);
+
+    });
+
+    function marcaChanged(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/TbCarros/RecuperarModelo1",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (e) {
+                let selectModelo = document.getElementById("IdModelo");
+                let html = "";
+                let nlista = e;
+                for (var i = 0; i < e.length; i++) {
+                    html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
+                }
+                return e;
+                selectModelo.innerHTML = html;
+            }
+        });
+    }
+
+    function getPrrov(select) {
+        var value = select.value
+        if (value != 0) {
+            $.ajax({
+                url: "/TbCarros/getProveedores",
+                data: { "tipo": value },
+                method: "POST",
+                success: function (z) {
+                    let selectVersion = document.getElementById("selectProovedor");
+                    let html = "";
+                    for (var i = 0; i < z.length; i++) {
+                        html += "<option value ='" + z[i].tipo + "' >" + z[i].valor + "</option>";
+                    }
+                    selectVersion.innerHTML = html;
+                }
+            });
+        }
+    }
+
+    function modeloChange(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/TbCarros/RecuperarVersion1",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (z) {
+                let selectVersion = document.getElementById("IdVersion");
+                let html = "";
+                for (var i = 0; i < z.length; i++) {
+                    html += "<option value ='" + z[i].idVersionCarro + "' >" + z[i].versionCarro + "</option>";
+                }
+                selectVersion.innerHTML = html;
+            }
+        });
+    }
+
+
+    function getPrrov(select) {
+        var value = select.value
+        if (value != 0) {
+            $.ajax({
+                url: "/TbCarros/getProveedores",
+                data: { "tipo": value },
+                method: "POST",
+                success: function (z) {
+                    let selectVersion = document.getElementById("selectProovedor");
+                    let html = "";
+                    for (var i = 0; i < z.length; i++) {
+                        html += "<option value ='" + z[i].tipo + "' >" + z[i].valor + "</option>";
+                    }
+                    selectVersion.innerHTML = html;
+                }
+            });
+        }
+    }
+</script>

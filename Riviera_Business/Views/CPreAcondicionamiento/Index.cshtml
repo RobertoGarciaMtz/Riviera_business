@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Riviera_Business.Models.CPreAcondicionamiento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Lista de acondicionamientos</h1>
+<a class="btn-success" asp-action="Create">Agregar Otro acondicionamiento</a>
+<p>Gastos tentativos previos a la compra o antes de la llegada de un Atomovil </p>
+<table class="table" id="dataTable" style="width: 100%;">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Refac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Esteticos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hyp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trasl)
+            </th>
+            <th>
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Refac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Esteticos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hyp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trasl)
+            </td>
+            <td>@Html.DisplayFor(modelTtem => item.TbCarrosIdCarrosNavigation.NoSerie)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TbCarrosIdCarrosNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.IdPreAcondicionamiento">Corregir</a> |
+                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.IdPreAcondicionamiento">Detalles</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

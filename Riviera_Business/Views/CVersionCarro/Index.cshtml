@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Riviera_Business.Models.CVersionCarro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Versiones disponibles</h1>
+<a class="btn btn-success mb-3" asp-action="Create">Agregar Nueva Version</a>
+<p>Lista de versiones de automoviles manejadas por la empresa</p>
+<table class="" style="width:100%" id="dataTable">
+    <thead class="bg-secondary">
+        <tr>
+            <th>
+                Marca
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Versión
+            </th>
+            <th>
+                Agregado por
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVersionCarro" class="btn btn-sm btn-success mr-2">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.IdVersionCarro" class="btn btn-sm btn-info">Detalles</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+    $('#tableid').on('click', 'button', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $('#tableid').on('change', 'select', function () {
+        if ($(this).val()) { $(this).next().show(); }
+    });
+</script>

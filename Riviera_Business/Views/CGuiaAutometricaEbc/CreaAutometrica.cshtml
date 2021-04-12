@@ -1,0 +1,127 @@
+﻿@model Riviera_Business.Models.CGuiaAutometricaEbc
+
+@{
+    ViewData["Title"] = "CreaAutometrica";
+}
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("TipoGuia").style.display = "none";
+    });
+
+
+    function calcularmedia() {
+        var valor = document.getElementById("valor1").value;
+        var valor2 = document.getElementById("valor2").value;
+        var valor_convert = parseFloat(valor);
+        var valor_convert2 = parseFloat(valor2);
+        var resultado = (valor_convert + valor_convert2) / 2;
+        var elem = document.getElementById("resultados");
+        elem.value = resultado;
+    }
+</script>
+
+<h1>Llenar Guia Autometrica</h1>
+<hr />
+<p>En este apartado se agregaran los precios de las guias con su respectivo mes y Automovil de la Guia
+    Autometrica</p>
+    
+    <div class="content">
+        <form asp-action="CreaAutometrica">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" id="TipoGuia">
+                <label class="control-label">Guia Autometrica</label>
+                <select asp-for="GuiaAutometricaEbc" class="form-control">
+                    <option value="1">Guia Autometrica</option>
+                </select>
+                <span asp-validation-for="GuiaAutometricaEbc" class="text-danger"></span>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5" style="text-align:center;">
+                    <a>Seleccionar inicio de mes correspondiente</a>
+                </div>
+                <div class="col-md-5" style="text-align:center;">
+                    <p> Seleccionar el Automovil al que pertenece</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <label asp-for="Fecha" class="control-label">Fecha de la Guia</label>
+                </div>
+                <div class="col-md-5">
+                    <label asp-for="IdVersion" class="control-label">Seleccionar version </label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+                <div class="col-md-5">
+                    <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <label asp-for="Toma" class="control-label">Precio de Toma</label>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Venta" class="control-label">Precio de Venta</label>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="Media" class="control-label"></label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <input asp-for="Toma" class="form-control" id="valor1" />
+                    <span asp-validation-for="Toma" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="Venta" class="form-control" id="valor2" />
+                    <span asp-validation-for="Venta" class="text-danger"></span>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" onclick="calcularmedia(this)">Calcular Media</button>
+                </div>
+                <div class="col-md-2">
+                    <input asp-for="Media" class="form-control" id="resultados" />
+                    <span asp-validation-for="Media" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <label asp-for="IdEstado" class="control-label"></label>
+                </div>
+                <div class="col-md-5">
+                    <label asp-for="Usuario" class="control-label"></label>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                </div>
+                <div class="col-md-5">
+                    <input asp-for="Usuario" class="form-control" />
+                    <span asp-validation-for="Usuario" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-11 text-right">
+                    <a class="btn btn-info mr-2" asp-action="Index">Ver guias</a>
+                    <input type="submit" value="Agregar Guia de Auto" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

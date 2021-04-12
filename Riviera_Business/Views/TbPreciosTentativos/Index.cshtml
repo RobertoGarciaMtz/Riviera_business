@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbPreciosTentativos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<style>
+    .retail {
+        background-color: #88F070;
+    }
+    .interagencias {
+        background-color: #86DAF9;
+    }
+    .expo {
+        background-color: #B786F9;
+    }
+
+</style>
+
+<p>
+    <a asp-action="Create">Agregar mas Precios</a>
+</p>
+<p>
+    En este apartado se llenaran los precios tentativos tanto de Retail,InterAgencias y Expo
+</p>
+<p>
+    Para llenar dar clik en "Agregar mas Precios"
+</p>
+<table class="table" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Porcentaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoNavigation)
+            </th>
+            <th>
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>Marca</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.TipoVenta == 1)
+                {
+                    <label class="retail">Precio Retail</label>
+                }
+                @if (item.TipoVenta == 2)
+                {
+                    <label class="interagencias">Precio InterAgencia</label>
+                }
+                @if (item.TipoVenta == 3)
+                {
+                    <label class="expo">Precio Expo</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ub)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Porcentaje)%
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoNavigation.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPreciosTentativos">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPreciosTentativos">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPreciosTentativos">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,114 @@
+﻿@model Riviera_Business.Models.TbExportacion
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TbExportacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdExportacion" />
+            <div class="form-group">
+                <label asp-for="OrdenCompra" class="control-label"></label>
+                <input asp-for="OrdenCompra" class="form-control" />
+                <span asp-validation-for="OrdenCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoFactura" class="control-label"></label>
+                <input asp-for="NoFactura" class="form-control" />
+                <span asp-validation-for="NoFactura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorFactura" class="control-label"></label>
+                <input asp-for="ValorFactura" class="form-control" />
+                <span asp-validation-for="ValorFactura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFactura" class="control-label"></label>
+                <input asp-for="FechaFactura" class="form-control" />
+                <span asp-validation-for="FechaFactura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cfdi" class="control-label"></label>
+                <input asp-for="Cfdi" class="form-control" />
+                <span asp-validation-for="Cfdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Xml" class="control-label"></label>
+                <input asp-for="Xml" class="form-control" />
+                <span asp-validation-for="Xml" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PedimientoImpOk" class="control-label"></label>
+                <input asp-for="PedimientoImpOk" class="form-control" />
+                <span asp-validation-for="PedimientoImpOk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pagada" class="control-label"></label>
+                <input asp-for="Pagada" class="form-control" />
+                <span asp-validation-for="Pagada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaPago" class="control-label"></label>
+                <input asp-for="FechaPago" class="form-control" />
+                <span asp-validation-for="FechaPago" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CfdiFpA" class="control-label"></label>
+                <input asp-for="CfdiFpA" class="form-control" />
+                <span asp-validation-for="CfdiFpA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                <span asp-validation-for="IdEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaPromesaEntrega" class="control-label"></label>
+                <input asp-for="FechaPromesaEntrega" class="form-control" />
+                <span asp-validation-for="FechaPromesaEntrega" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CartaPoderId" class="control-label"></label>
+                <input asp-for="CartaPoderId" class="form-control" />
+                <span asp-validation-for="CartaPoderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entregada" class="control-label"></label>
+                <input asp-for="Entregada" class="form-control" />
+                <span asp-validation-for="Entregada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ObservacionesReclamos" class="control-label"></label>
+                <input asp-for="ObservacionesReclamos" class="form-control" />
+                <span asp-validation-for="ObservacionesReclamos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalidaAgencia" class="control-label"></label>
+                <input asp-for="SalidaAgencia" class="form-control" />
+                <span asp-validation-for="SalidaAgencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPersona" class="control-label"></label>
+                <select asp-for="IdPersona" class="form-control" asp-items="ViewBag.Personas"></select>
+                <span asp-validation-for="IdPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
